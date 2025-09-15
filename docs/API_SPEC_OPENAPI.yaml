@@ -1,0 +1,2015 @@
+openapi: 3.0.3
+info:
+  title: AI Departments Platform API
+  description: |
+    REST API for the AI Departments Platform - empowering micro-entrepreneurs with virtual AI departments for business automation.
+    
+    ## Authentication
+    All endpoints require JWT authentication unless specified otherwise. Include the access token in the Authorization header:
+    ```
+    Authorization: Bearer <access_token>
+    ```
+    
+    ## Rate Limiting
+    - **Free tier**: 100 requests per hour
+    - **Paid tiers**: 1000-5000 requests per hour based on plan
+    - Rate limit headers included in responses
+    
+    ## Multi-tenancy
+    All data is automatically scoped to the authenticated user's organization. No explicit organization ID needed in requests.
+    
+    ## Error Handling
+    Standard HTTP status codes with detailed error messages in response body.
+  version: 1.0.0
+  contact:
+    name: AI Departments Platform
+    email: developers@aidepartments.com.br
+    url: https://docs.aidepartments.com.br
+  license:
+    name: Proprietary
+    url: https://aidepartments.com.br/legal/license
+
+servers:
+  - url: https://api.aidepartments.com.br/v1
+    description: Production server
+  - url: https://staging-api.aidepartments.com.br/v1
+    description: Staging server
+  - url: http://localhost:8000/v1
+    description: Local development server
+
+security:
+  - BearerAuth: []
+
+paths:
+  # Authentication Endpoints
+  /auth/register:
+    post:
+      tags: [Authentication]
+      summary: Register new user account
+      description: Create a new user account and organization
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+      responses:
+        '201':
+          description: Account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+
+  /auth/login:
+    post:
+      tags: [Authentication]
+      summary: Authenticate user
+      description: Login with email and password to receive access tokens
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /auth/refresh:
+    post:
+      tags: [Authentication]
+      summary: Refresh access token
+      description: Get new access token using refresh token
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refresh_token:
+                  type: string
+                  description: Valid refresh token
+              required: [refresh_token]
+      responses:
+        '200':
+          description: Token refreshed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /auth/logout:
+    post:
+      tags: [Authentication]
+      summary: Logout user
+      description: Invalidate access and refresh tokens
+      responses:
+        '200':
+          description: Logout successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Logout successful"
+
+  # Organization Management
+  /organizations/me:
+    get:
+      tags: [Organizations]
+      summary: Get current organization
+      description: Retrieve details of the authenticated user's organization
+      responses:
+        '200':
+          description: Organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      tags: [Organizations]
+      summary: Update organization
+      description: Update organization details and configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationUpdate'
+      responses:
+        '200':
+          description: Organization updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  # Department Management
+  /departments:
+    get:
+      tags: [Departments]
+      summary: List all departments
+      description: Get all departments configured for the organization
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, paused, archived]
+          description: Filter by department status
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [marketing, customer_service, design, sales_crm, finance]
+          description: Filter by department type
+      responses:
+        '200':
+          description: List of departments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  departments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Department'
+                  total:
+                    type: integer
+                    description: Total number of departments
+
+    post:
+      tags: [Departments]
+      summary: Create new department
+      description: Create and configure a new AI department
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentCreate'
+      responses:
+        '201':
+          description: Department created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /departments/{departmentId}:
+    get:
+      tags: [Departments]
+      summary: Get department details
+      description: Retrieve detailed information about a specific department
+      parameters:
+        - $ref: '#/components/parameters/DepartmentId'
+      responses:
+        '200':
+          description: Department details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentDetail'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      tags: [Departments]
+      summary: Update department
+      description: Update department configuration and settings
+      parameters:
+        - $ref: '#/components/parameters/DepartmentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentUpdate'
+      responses:
+        '200':
+          description: Department updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags: [Departments]
+      summary: Delete department
+      description: Archive department and stop all agents
+      parameters:
+        - $ref: '#/components/parameters/DepartmentId'
+      responses:
+        '200':
+          description: Department deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Department archived successfully"
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /departments/{departmentId}/agents:
+    get:
+      tags: [Agents]
+      summary: List department agents
+      description: Get all AI agents within a specific department
+      parameters:
+        - $ref: '#/components/parameters/DepartmentId'
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, paused, error, training]
+          description: Filter by agent status
+      responses:
+        '200':
+          description: List of agents
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  agents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Agent'
+
+    post:
+      tags: [Agents]
+      summary: Create new agent
+      description: Add a new AI agent to the department
+      parameters:
+        - $ref: '#/components/parameters/DepartmentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentCreate'
+      responses:
+        '201':
+          description: Agent created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+
+  # Agent Management
+  /agents/{agentId}:
+    get:
+      tags: [Agents]
+      summary: Get agent details
+      description: Retrieve detailed information about a specific agent
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+      responses:
+        '200':
+          description: Agent details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentDetail'
+
+    put:
+      tags: [Agents]
+      summary: Update agent
+      description: Update agent configuration and settings
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentUpdate'
+      responses:
+        '200':
+          description: Agent updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+
+  /agents/{agentId}/execute:
+    post:
+      tags: [Agents]
+      summary: Execute agent manually
+      description: Trigger manual execution of an agent
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentExecution'
+      responses:
+        '200':
+          description: Agent execution started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutionResult'
+
+  # Content Management
+  /content:
+    get:
+      tags: [Content]
+      summary: List generated content
+      description: Get paginated list of AI-generated content
+      parameters:
+        - name: content_type
+          in: query
+          schema:
+            type: string
+            enum: [social_post, whatsapp_response, email, blog_post]
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [draft, scheduled, published, failed]
+        - name: platform
+          in: query
+          schema:
+            type: string
+            enum: [instagram, facebook, whatsapp, email]
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: List of content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentListResponse'
+
+    post:
+      tags: [Content]
+      summary: Create content manually
+      description: Manually create content (bypassing AI generation)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentCreate'
+      responses:
+        '201':
+          description: Content created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+
+  /content/{contentId}:
+    get:
+      tags: [Content]
+      summary: Get content details
+      description: Retrieve specific content item with full details
+      parameters:
+        - $ref: '#/components/parameters/ContentId'
+      responses:
+        '200':
+          description: Content details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentDetail'
+
+    put:
+      tags: [Content]
+      summary: Update content
+      description: Update content before publishing
+      parameters:
+        - $ref: '#/components/parameters/ContentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentUpdate'
+      responses:
+        '200':
+          description: Content updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+
+    delete:
+      tags: [Content]
+      summary: Delete content
+      description: Delete content (only if not published)
+      parameters:
+        - $ref: '#/components/parameters/ContentId'
+      responses:
+        '200':
+          description: Content deleted successfully
+
+  /content/{contentId}/approve:
+    post:
+      tags: [Content]
+      summary: Approve content
+      description: Approve AI-generated content for publishing
+      parameters:
+        - $ref: '#/components/parameters/ContentId'
+      responses:
+        '200':
+          description: Content approved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+
+  /content/{contentId}/schedule:
+    post:
+      tags: [Content]
+      summary: Schedule content
+      description: Schedule content for future publishing
+      parameters:
+        - $ref: '#/components/parameters/ContentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                scheduled_for:
+                  type: string
+                  format: date-time
+                  description: ISO 8601 datetime for scheduling
+              required: [scheduled_for]
+      responses:
+        '200':
+          description: Content scheduled successfully
+
+  # Conversations & Customer Service
+  /conversations:
+    get:
+      tags: [Conversations]
+      summary: List conversations
+      description: Get paginated list of customer conversations
+      parameters:
+        - name: channel
+          in: query
+          schema:
+            type: string
+            enum: [whatsapp, instagram, facebook, email]
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, resolved, escalated, archived]
+        - name: assigned_to_human
+          in: query
+          schema:
+            type: boolean
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: List of conversations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationListResponse'
+
+  /conversations/{conversationId}:
+    get:
+      tags: [Conversations]
+      summary: Get conversation details
+      description: Retrieve conversation with full message history
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+      responses:
+        '200':
+          description: Conversation details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationDetail'
+
+    put:
+      tags: [Conversations]
+      summary: Update conversation
+      description: Update conversation status or assignment
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationUpdate'
+      responses:
+        '200':
+          description: Conversation updated successfully
+
+  /conversations/{conversationId}/messages:
+    get:
+      tags: [Conversations]
+      summary: List conversation messages
+      description: Get paginated messages for a conversation
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: List of messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageListResponse'
+
+    post:
+      tags: [Conversations]
+      summary: Send message
+      description: Send a message in the conversation (human override)
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageCreate'
+      responses:
+        '201':
+          description: Message sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+
+  # Integrations
+  /integrations:
+    get:
+      tags: [Integrations]
+      summary: List integrations
+      description: Get all configured external integrations
+      responses:
+        '200':
+          description: List of integrations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  integrations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Integration'
+
+    post:
+      tags: [Integrations]
+      summary: Create integration
+      description: Configure new external service integration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationCreate'
+      responses:
+        '201':
+          description: Integration created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+
+  /integrations/{integrationId}:
+    get:
+      tags: [Integrations]
+      summary: Get integration details
+      description: Retrieve specific integration configuration
+      parameters:
+        - $ref: '#/components/parameters/IntegrationId'
+      responses:
+        '200':
+          description: Integration details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationDetail'
+
+    put:
+      tags: [Integrations]
+      summary: Update integration
+      description: Update integration configuration
+      parameters:
+        - $ref: '#/components/parameters/IntegrationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationUpdate'
+      responses:
+        '200':
+          description: Integration updated successfully
+
+    delete:
+      tags: [Integrations]
+      summary: Delete integration
+      description: Remove integration and disconnect service
+      parameters:
+        - $ref: '#/components/parameters/IntegrationId'
+      responses:
+        '200':
+          description: Integration deleted successfully
+
+  /integrations/{integrationId}/sync:
+    post:
+      tags: [Integrations]
+      summary: Sync integration
+      description: Manually trigger synchronization with external service
+      parameters:
+        - $ref: '#/components/parameters/IntegrationId'
+      responses:
+        '200':
+          description: Sync initiated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sync_id:
+                    type: string
+                    format: uuid
+                  status:
+                    type: string
+                    enum: [initiated, running, completed, failed]
+
+  # Analytics & Reporting
+  /analytics/dashboard:
+    get:
+      tags: [Analytics]
+      summary: Get dashboard metrics
+      description: Retrieve key metrics for the organization dashboard
+      parameters:
+        - name: period
+          in: query
+          schema:
+            type: string
+            enum: [today, week, month, quarter]
+          description: Time period for metrics
+          default: week
+      responses:
+        '200':
+          description: Dashboard metrics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardMetrics'
+
+  /analytics/departments/{departmentId}:
+    get:
+      tags: [Analytics]
+      summary: Get department analytics
+      description: Detailed analytics for a specific department
+      parameters:
+        - $ref: '#/components/parameters/DepartmentId'
+        - name: period
+          in: query
+          schema:
+            type: string
+            enum: [today, week, month, quarter]
+          default: month
+      responses:
+        '200':
+          description: Department analytics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentAnalytics'
+
+  # Billing & Subscription
+  /billing/subscription:
+    get:
+      tags: [Billing]
+      summary: Get current subscription
+      description: Retrieve current subscription details and usage
+      responses:
+        '200':
+          description: Subscription details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+
+    put:
+      tags: [Billing]
+      summary: Update subscription
+      description: Change subscription plan or billing details
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionUpdate'
+      responses:
+        '200':
+          description: Subscription updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+
+  /billing/usage:
+    get:
+      tags: [Billing]
+      summary: Get usage metrics
+      description: Current billing period usage by service
+      parameters:
+        - name: period_start
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: period_end
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Usage metrics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageMetrics'
+
+  /billing/invoices:
+    get:
+      tags: [Billing]
+      summary: List invoices
+      description: Get paginated list of invoices
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceListResponse'
+
+  # Webhooks
+  /webhooks:
+    post:
+      tags: [Webhooks]
+      summary: Receive webhook
+      description: Endpoint for receiving webhooks from external services
+      security: []
+      parameters:
+        - name: X-Webhook-Source
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: [whatsapp, instagram, facebook, stripe, mercadopago]
+        - name: X-Webhook-Signature
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Webhook signature for verification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Webhook payload (varies by source)
+      responses:
+        '200':
+          description: Webhook processed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "processed"
+                  webhook_id:
+                    type: string
+                    format: uuid
+        '400':
+          description: Invalid webhook payload
+        '401':
+          description: Invalid webhook signature
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    DepartmentId:
+      name: departmentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Department unique identifier
+
+    AgentId:
+      name: agentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Agent unique identifier
+
+    ContentId:
+      name: contentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Content unique identifier
+
+    ConversationId:
+      name: conversationId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Conversation unique identifier
+
+    IntegrationId:
+      name: integrationId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Integration unique identifier
+
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination
+
+    PageSize:
+      name: page_size
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      description: Number of items per page
+
+  schemas:
+    # Authentication Schemas
+    UserRegistration:
+      type: object
+      required: [email, password, full_name, organization_name]
+      properties:
+        email:
+          type: string
+          format: email
+          example: "marina@example.com"
+        password:
+          type: string
+          minLength: 8
+          example: "securePassword123"
+        full_name:
+          type: string
+          example: "Marina Silva"
+        organization_name:
+          type: string
+          example: "Marina's Fashion"
+        phone:
+          type: string
+          example: "+5511999999999"
+        business_type:
+          type: string
+          enum: [fashion, food, services, digital, other]
+          example: "fashion"
+
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+
+    AuthResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: JWT access token (15 minutes expiry)
+        refresh_token:
+          type: string
+          description: Refresh token (7 days expiry)
+        token_type:
+          type: string
+          example: "bearer"
+        expires_in:
+          type: integer
+          example: 900
+          description: Access token expiry in seconds
+        user:
+          $ref: '#/components/schemas/User'
+
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          example: "bearer"
+        expires_in:
+          type: integer
+          example: 900
+
+    # User & Organization Schemas
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        full_name:
+          type: string
+        phone:
+          type: string
+        avatar_url:
+          type: string
+          format: url
+        role:
+          type: string
+          enum: [owner, admin, member]
+        created_at:
+          type: string
+          format: date-time
+        last_login_at:
+          type: string
+          format: date-time
+
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: "Marina's Fashion"
+        slug:
+          type: string
+          example: "marinas-fashion"
+        business_type:
+          type: string
+          enum: [fashion, food, services, digital, other]
+        industry_vertical:
+          type: string
+        timezone:
+          type: string
+          example: "America/Sao_Paulo"
+        locale:
+          type: string
+          example: "pt-BR"
+        currency:
+          type: string
+          example: "BRL"
+        subscription_plan:
+          type: string
+          enum: [starter, growth, scale]
+        billing_status:
+          type: string
+          enum: [trial, active, past_due, canceled]
+        created_at:
+          type: string
+          format: date-time
+
+    OrganizationUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        business_type:
+          type: string
+          enum: [fashion, food, services, digital, other]
+        industry_vertical:
+          type: string
+        timezone:
+          type: string
+        locale:
+          type: string
+
+    # Department Schemas
+    Department:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum: [marketing, customer_service, design, sales_crm, finance]
+        name:
+          type: string
+          example: "Marketing Department"
+        description:
+          type: string
+        status:
+          type: string
+          enum: [active, paused, archived]
+        configuration:
+          type: object
+          description: Department-specific configuration
+        industry_template:
+          type: string
+          enum: [fashion, food, services]
+        agent_count:
+          type: integer
+        last_activity_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+
+    DepartmentDetail:
+      allOf:
+        - $ref: '#/components/schemas/Department'
+        - type: object
+          properties:
+            agents:
+              type: array
+              items:
+                $ref: '#/components/schemas/Agent'
+            metrics:
+              type: object
+              properties:
+                total_tasks:
+                  type: integer
+                successful_tasks:
+                  type: integer
+                failed_tasks:
+                  type: integer
+                avg_response_time:
+                  type: number
+
+    DepartmentCreate:
+      type: object
+      required: [type, name]
+      properties:
+        type:
+          type: string
+          enum: [marketing, customer_service, design, sales_crm, finance]
+        name:
+          type: string
+        description:
+          type: string
+        configuration:
+          type: object
+        industry_template:
+          type: string
+          enum: [fashion, food, services]
+
+    DepartmentUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [active, paused, archived]
+        configuration:
+          type: object
+
+    # Agent Schemas
+    Agent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        department_id:
+          type: string
+          format: uuid
+        agent_type:
+          type: string
+          example: "social_media_agent"
+        name:
+          type: string
+          example: "Social Media Agent"
+        description:
+          type: string
+        status:
+          type: string
+          enum: [active, paused, error, training]
+        configuration:
+          type: object
+        model_configuration:
+          type: object
+          properties:
+            primary_model:
+              type: string
+              example: "gpt-4"
+            temperature:
+              type: number
+              example: 0.7
+            max_tokens:
+              type: integer
+              example: 1000
+        execution_count:
+          type: integer
+        success_rate:
+          type: number
+          example: 0.95
+        last_execution_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+
+    AgentDetail:
+      allOf:
+        - $ref: '#/components/schemas/Agent'
+        - type: object
+          properties:
+            recent_executions:
+              type: array
+              items:
+                $ref: '#/components/schemas/AgentExecution'
+
+    AgentCreate:
+      type: object
+      required: [agent_type, name]
+      properties:
+        agent_type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        configuration:
+          type: object
+        model_configuration:
+          type: object
+
+    AgentUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [active, paused, error, training]
+        configuration:
+          type: object
+        model_configuration:
+          type: object
+
+    AgentExecution:
+      type: object
+      properties:
+        trigger_type:
+          type: string
+          enum: [manual, scheduled, webhook, event]
+        input_data:
+          type: object
+          description: Input parameters for execution
+
+    ExecutionResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, running, completed, failed]
+        started_at:
+          type: string
+          format: date-time
+        estimated_completion:
+          type: string
+          format: date-time
+
+    # Content Schemas
+    Content:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        content_type:
+          type: string
+          enum: [social_post, whatsapp_response, email, blog_post]
+        platform:
+          type: string
+          enum: [instagram, facebook, whatsapp, email]
+        title:
+          type: string
+        body:
+          type: string
+        media_urls:
+          type: array
+          items:
+            type: string
+            format: url
+        metadata:
+          type: object
+        status:
+          type: string
+          enum: [draft, scheduled, published, failed]
+        scheduled_for:
+          type: string
+          format: date-time
+        published_at:
+          type: string
+          format: date-time
+        human_reviewed:
+          type: boolean
+        human_approved:
+          type: boolean
+        engagement_metrics:
+          type: object
+          properties:
+            views:
+              type: integer
+            likes:
+              type: integer
+            comments:
+              type: integer
+            shares:
+              type: integer
+        created_at:
+          type: string
+          format: date-time
+
+    ContentDetail:
+      allOf:
+        - $ref: '#/components/schemas/Content'
+        - type: object
+          properties:
+            agent_execution_id:
+              type: string
+              format: uuid
+            generation_prompt:
+              type: string
+            sentiment_score:
+              type: number
+              minimum: -1
+              maximum: 1
+            brand_alignment_score:
+              type: number
+              minimum: 0
+              maximum: 1
+
+    ContentCreate:
+      type: object
+      required: [content_type, platform, body]
+      properties:
+        content_type:
+          type: string
+          enum: [social_post, whatsapp_response, email, blog_post]
+        platform:
+          type: string
+          enum: [instagram, facebook, whatsapp, email]
+        title:
+          type: string
+        body:
+          type: string
+        media_urls:
+          type: array
+          items:
+            type: string
+            format: url
+        metadata:
+          type: object
+        scheduled_for:
+          type: string
+          format: date-time
+
+    ContentUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        body:
+          type: string
+        media_urls:
+          type: array
+          items:
+            type: string
+            format: url
+        metadata:
+          type: object
+        scheduled_for:
+          type: string
+          format: date-time
+
+    ContentListResponse:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Content'
+        pagination:
+          $ref: '#/components/schemas/PaginationInfo'
+
+    # Conversation Schemas
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        channel:
+          type: string
+          enum: [whatsapp, instagram, facebook, email]
+        customer_name:
+          type: string
+        customer_phone:
+          type: string
+        customer_email:
+          type: string
+        status:
+          type: string
+          enum: [active, resolved, escalated, archived]
+        priority:
+          type: string
+          enum: [low, normal, high, urgent]
+        assigned_to_human:
+          type: boolean
+        assigned_user_id:
+          type: string
+          format: uuid
+        message_count:
+          type: integer
+        first_response_time_seconds:
+          type: integer
+        resolution_time_seconds:
+          type: integer
+        satisfaction_score:
+          type: integer
+          minimum: 1
+          maximum: 5
+        tags:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    ConversationDetail:
+      allOf:
+        - $ref: '#/components/schemas/Conversation'
+        - type: object
+          properties:
+            messages:
+              type: array
+              items:
+                $ref: '#/components/schemas/Message'
+            summary:
+              type: string
+
+    ConversationUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [active, resolved, escalated, archived]
+        priority:
+          type: string
+          enum: [low, normal, high, urgent]
+        assigned_to_human:
+          type: boolean
+        assigned_user_id:
+          type: string
+          format: uuid
+        tags:
+          type: array
+          items:
+            type: string
+
+    ConversationListResponse:
+      type: object
+      properties:
+        conversations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Conversation'
+        pagination:
+          $ref: '#/components/schemas/PaginationInfo'
+
+    # Message Schemas
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        conversation_id:
+          type: string
+          format: uuid
+        direction:
+          type: string
+          enum: [inbound, outbound]
+        message_type:
+          type: string
+          enum: [text, image, audio, video, document]
+        text_content:
+          type: string
+        media_urls:
+          type: array
+          items:
+            type: string
+            format: url
+        sender_type:
+          type: string
+          enum: [customer, ai, human]
+        sender_user_id:
+          type: string
+          format: uuid
+        agent_id:
+          type: string
+          format: uuid
+        intent_classification:
+          type: string
+        sentiment_score:
+          type: number
+          minimum: -1
+          maximum: 1
+        confidence_score:
+          type: number
+          minimum: 0
+          maximum: 1
+        delivery_status:
+          type: string
+          enum: [pending, sent, delivered, read, failed]
+        created_at:
+          type: string
+          format: date-time
+
+    MessageCreate:
+      type: object
+      required: [text_content]
+      properties:
+        text_content:
+          type: string
+        message_type:
+          type: string
+          enum: [text, image, audio, video, document]
+          default: text
+        media_urls:
+          type: array
+          items:
+            type: string
+            format: url
+
+    MessageListResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        pagination:
+          $ref: '#/components/schemas/PaginationInfo'
+
+    # Integration Schemas
+    Integration:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        integration_type:
+          type: string
+          enum: [whatsapp, instagram, facebook, stripe, mercadopago, email]
+        provider:
+          type: string
+        account_identifier:
+          type: string
+          description: Phone number, page ID, account ID, etc.
+        status:
+          type: string
+          enum: [active, expired, revoked, error]
+        configuration:
+          type: object
+        last_sync_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+
+    IntegrationDetail:
+      allOf:
+        - $ref: '#/components/schemas/Integration'
+        - type: object
+          properties:
+            webhook_url:
+              type: string
+              format: url
+            rate_limit_per_hour:
+              type: integer
+            requests_this_hour:
+              type: integer
+            last_error:
+              type: string
+
+    IntegrationCreate:
+      type: object
+      required: [integration_type, provider]
+      properties:
+        integration_type:
+          type: string
+          enum: [whatsapp, instagram, facebook, stripe, mercadopago, email]
+        provider:
+          type: string
+        account_identifier:
+          type: string
+        access_token:
+          type: string
+          description: OAuth access token
+        configuration:
+          type: object
+
+    IntegrationUpdate:
+      type: object
+      properties:
+        account_identifier:
+          type: string
+        access_token:
+          type: string
+        configuration:
+          type: object
+
+    # Analytics Schemas
+    DashboardMetrics:
+      type: object
+      properties:
+        overview:
+          type: object
+          properties:
+            active_departments:
+              type: integer
+            total_messages_sent:
+              type: integer
+            total_content_generated:
+              type: integer
+            customer_satisfaction_avg:
+              type: number
+        departments:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+              type:
+                type: string
+              metrics:
+                type: object
+                properties:
+                  tasks_completed:
+                    type: integer
+                  success_rate:
+                    type: number
+                  avg_response_time:
+                    type: number
+
+    DepartmentAnalytics:
+      type: object
+      properties:
+        department_id:
+          type: string
+          format: uuid
+        period:
+          type: string
+        metrics:
+          type: object
+          properties:
+            total_executions:
+              type: integer
+            successful_executions:
+              type: integer
+            failed_executions:
+              type: integer
+            avg_execution_time:
+              type: number
+            cost_breakdown:
+              type: object
+              properties:
+                ai_tokens:
+                  type: number
+                api_calls:
+                  type: number
+                storage:
+                  type: number
+        performance_trend:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+              executions:
+                type: integer
+              success_rate:
+                type: number
+
+    # Billing Schemas
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        plan_name:
+          type: string
+          enum: [starter, growth, scale]
+        billing_cycle:
+          type: string
+          enum: [monthly, annual]
+        amount_cents:
+          type: integer
+        currency:
+          type: string
+          example: "BRL"
+        status:
+          type: string
+          enum: [trialing, active, past_due, canceled]
+        current_period_start:
+          type: string
+          format: date-time
+        current_period_end:
+          type: string
+          format: date-time
+        trial_end:
+          type: string
+          format: date-time
+        plan_features:
+          type: object
+          properties:
+            max_departments:
+              type: integer
+            max_agents_per_department:
+              type: integer
+            monthly_content_limit:
+              type: integer
+            priority_support:
+              type: boolean
+
+    SubscriptionUpdate:
+      type: object
+      properties:
+        plan_name:
+          type: string
+          enum: [starter, growth, scale]
+        billing_cycle:
+          type: string
+          enum: [monthly, annual]
+
+    UsageMetrics:
+      type: object
+      properties:
+        billing_period_start:
+          type: string
+          format: date-time
+        billing_period_end:
+          type: string
+          format: date-time
+        usage_by_type:
+          type: object
+          properties:
+            ai_tokens:
+              type: object
+              properties:
+                used:
+                  type: integer
+                limit:
+                  type: integer
+                overage:
+                  type: integer
+            messages_sent:
+              type: object
+              properties:
+                used:
+                  type: integer
+                limit:
+                  type: integer
+            storage_gb:
+              type: object
+              properties:
+                used:
+                  type: number
+                limit:
+                  type: number
+        estimated_overage_cost:
+          type: number
+
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        invoice_number:
+          type: string
+        amount_cents:
+          type: integer
+        currency:
+          type: string
+        status:
+          type: string
+          enum: [draft, open, paid, uncollectible]
+        period_start:
+          type: string
+          format: date-time
+        period_end:
+          type: string
+          format: date-time
+        due_date:
+          type: string
+          format: date-time
+        paid_at:
+          type: string
+          format: date-time
+        download_url:
+          type: string
+          format: url
+        created_at:
+          type: string
+          format: date-time
+
+    InvoiceListResponse:
+      type: object
+      properties:
+        invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Invoice'
+        pagination:
+          $ref: '#/components/schemas/PaginationInfo'
+
+    # Common Schemas
+    PaginationInfo:
+      type: object
+      properties:
+        page:
+          type: integer
+        page_size:
+          type: integer
+        total_items:
+          type: integer
+        total_pages:
+          type: integer
+        has_next:
+          type: boolean
+        has_previous:
+          type: boolean
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error details
+        timestamp:
+          type: string
+          format: date-time
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "validation_error"
+            message: "Invalid input parameters"
+            details:
+              field_errors:
+                email: "Invalid email format"
+            timestamp: "2025-09-13T10:00:00Z"
+
+    Unauthorized:
+      description: Authentication required or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "unauthorized"
+            message: "Invalid or expired access token"
+            timestamp: "2025-09-13T10:00:00Z"
+
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "forbidden"
+            message: "Insufficient permissions for this resource"
+            timestamp: "2025-09-13T10:00:00Z"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "not_found"
+            message: "Requested resource not found"
+            timestamp: "2025-09-13T10:00:00Z"
+
+    Conflict:
+      description: Resource already exists
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "conflict"
+            message: "Email already registered"
+            timestamp: "2025-09-13T10:00:00Z"
+
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        X-RateLimit-Limit:
+          schema:
+            type: integer
+          description: Request limit per hour
+        X-RateLimit-Remaining:
+          schema:
+            type: integer
+          description: Remaining requests in current window
+        X-RateLimit-Reset:
+          schema:
+            type: integer
+          description: Unix timestamp when limit resets
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "rate_limit_exceeded"
+            message: "Too many requests. Please try again later."
+            timestamp: "2025-09-13T10:00:00Z"
+
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "internal_server_error"
+            message: "An unexpected error occurred"
+            timestamp: "2025-09-13T10:00:00Z"
+
+tags:
+  - name: Authentication
+    description: User authentication and session management
+  - name: Organizations
+    description: Organization management and configuration
+  - name: Departments
+    description: AI department creation and management
+  - name: Agents
+    description: Individual AI agent configuration and execution
+  - name: Content
+    description: Generated content management and publishing
+  - name: Conversations
+    description: Customer conversation and message management
+  - name: Integrations
+    description: External service integrations (WhatsApp, social media, etc.)
+  - name: Analytics
+    description: Performance metrics and reporting
+  - name: Billing
+    description: Subscription and usage management
+  - name: Webhooks
+    description: Webhook endpoints for external services

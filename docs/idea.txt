@@ -1,0 +1,378 @@
+Plataforma Web “Departamentos de IA” — Lista MestRA de Documentação (para Claude Sonnet ser seu FULL-DEV)
+
+# Vision Brief — “AI Departments Platform”
+
+The core idea:
+I want to build a **web platform** that empowers micro-entrepreneurs and aspiring founders to launch and manage a business from scratch using **virtual departments powered by AI agents**. Instead of hiring a team or juggling dozens of disconnected SaaS tools, the user can activate a “Department” (like Marketing, Customer Service, Design, Finance, etc.), which comes pre-loaded with specialized AI agents that collaborate to perform tasks in that area.
+
+The mission:
+Make entrepreneurship radically more **accessible, fast, and affordable** by giving people a “company in a box” powered by AI. Even someone without an idea yet can start experimenting and testing businesses within minutes.
+
+---
+
+## Target Users
+
+* **Micro-entrepreneurs** who have recently started or plan to start a small business.
+* **Aspiring founders** who don’t even have an idea yet but want to try.
+* **Side hustlers / freelancers** who want to scale operations without hiring staff.
+
+The product should feel **futuristic but pragmatic**: sleek, modern, inspiring confidence, but also simple enough to get results fast.
+
+---
+
+## Core Concept
+
+* The platform is **multi-tenant SaaS**, web-first (responsive, mobile-friendly).
+* Users sign up, create their “company profile,” and then **activate Departments**.
+* Each Department contains **multiple specialized AI agents** that collaborate.
+
+  * Example: Marketing Department includes a Social Media agent, an SEO/Blog agent, an Ads agent, an Email agent.
+  * Customer Service Department includes a WhatsApp Responder, FAQ Builder, Ticket Classifier, Escalation Manager.
+* Departments can be configured via **templates and wizards** (industry presets like Restaurants, Clothing, Coaching, etc.).
+* Departments produce real, actionable outputs: posts scheduled to Instagram, replies on WhatsApp, dashboards, financial summaries, etc.
+
+---
+
+## MVP Scope (Phase 1)
+
+Focus on **two departments**:
+
+1. **Marketing**: generate and schedule social posts, suggest ad creatives, basic blog/SEO support.
+2. **Customer Service (CX)**: respond to WhatsApp messages, auto-classify inquiries, FAQ automation, basic escalation to human.
+
+MVP must include:
+
+* **Onboarding wizard** (“Create your company in minutes”)
+* **Company dashboard**: see departments, KPIs, tasks.
+* **Marketing tools**: create a calendar of posts, generate text+image, integrate with IG/FB.
+* **CX tools**: connect WhatsApp, auto-reply with FAQ, dashboard of conversations.
+* **Billing/Plans**: at least one paid plan (Stripe/Mercado Pago).
+* **Templates**: starter packs for 2–3 industries.
+
+---
+
+## Long-Term Expansion (Phase 2+)
+
+* Add more departments: Design, Data/BI, Sales CRM, Finance, Growth/Ads.
+* Add **Marketplace**: allow third parties to create department packs or templates.
+* Add **mobile app** once web is stable and adoption grows.
+* Add **Academy**: micro-lessons and guides to empower entrepreneurs.
+
+---
+
+## Design & UX Principles
+
+* **Neo-futuristic design**: dark mode first, bold typography, rounded edges, grid-based layout.
+* **Clarity over complexity**: users should succeed in 1–2 clicks, no steep learning curve.
+* **Gamified onboarding**: “Your company is live!”, progress bars, aha moments.
+* **Trust & credibility**: safe, professional look; not gimmicky.
+
+---
+
+## Technical Principles
+
+* **Stack**: Next.js (React, Tailwind) frontend; FastAPI backend; Postgres + Redis; GCP infra.
+* **Orchestration**: AI agents coordinated via LangGraph/crewAI or custom orchestrator.
+* **Multi-tenant**: isolation per company/org.
+* **Observability**: SLOs for response time (<8s for content gen, <3s for replies).
+* **Compliance**: LGPD-first (Brazil), GDPR-ready.
+* **Security**: RBAC, MFA, data minimization, safe prompts, moderation guardrails.
+
+---
+
+## Why This Matters
+
+Most people fail to start businesses because:
+
+1. They don’t know where to begin.
+2. They feel overwhelmed by the number of tools.
+3. They lack resources to hire a team.
+
+This platform eliminates those blockers:
+
+* **No confusion** → Departments are pre-configured.
+* **No tool overload** → Everything in one place.
+* **No high costs** → Virtual team of AI agents at subscription price.
+
+In short: we’re building the **first AI-powered company-builder**, where anyone can create a functional business in minutes.
+
+
+Abaixo está um pacotão completo de docs para tirar a sua plataforma do zero até o MVP e além. Estão organizados por áreas, com nomes de arquivos sugeridos, objetivo, conteúdo mínimo e decisões que devem sair do doc. A ideia é que você tenha um /docs enxuto mas ultra-estruturado, pronto para Claude produzir código, wireframes e infra sem travar.
+Stack sugerida (padrão do pacote):Frontend: Next.js + React + Tailwind (Design System)Backend: FastAPI (Python) + Postgres (Cloud SQL) + Redis (fila/cache) + pgvector (RAG)Orquestração de Agentes: LangGraph/crewai ou orquestrador próprio (doc abaixo)Cloud: GCP (Cloud Run, Cloud SQL, Cloud Storage, Pub/Sub, Secret Manager)Observabilidade: OpenTelemetry + Grafana/Prometheus + SentryPagamentos: Stripe + Mercado Pago (BR)Mensageria/Integrações: WhatsApp Cloud API, Telegram Bot API, e-mail (SES/SendGrid)Compliance: LGPD + (GDPR-ready)
+
+0) Índice, Convenções & Repositório
+	1	docs/INDEX.md — Índice geral do projeto
+	◦	Escopo dos diretórios, donos (Owner: Felipe PM; Tech Owner: Claude), status (TODO/IN-PROGRESS/DONE), última atualização.
+	◦	Decisões: convenções de nomenclatura, processo de atualização.
+	2	docs/CONTRIBUTING.md — Guia de contribuição para Claude
+	◦	Fluxo de branches, commits, PR templates, labels, DOD (Definition of Done).
+	◦	Decisões: padrões de review e automações de CI/CD.
+	3	docs/CODING_STANDARDS.md — Padrões de código (backend/frontend)
+	◦	Linters, formatadores, padrões de teste, estrutura de pastas.
+	◦	Decisões: versões mínimas, libs preferidas.
+	4	docs/ENV_SETUP.md — Setup local e Cloud
+	◦	Como rodar tudo localmente (Docker compose), seeds, variáveis .env, provisionamento GCP.
+	◦	Decisões: IAAC (Terraform opcional), chaves e segredos (Secret Manager).
+
+1) Estratégia & Produto
+	5	docs/PRD.md — Product Requirements Document (MVP → V2)
+	◦	Problema, público, proposta de valor, cenários “empresa do zero pelo celular”, pacotes (Starter/Growth/Full).
+	◦	Requisitos do MVP: criação de conta, criar “empresa”, contratar Departamento de Marketing e Atendimento, templates iniciais, publicação de posts, respostas básicas WhatsApp, dashboard.
+	◦	Métricas de sucesso (North Star): empresas criadas, tempo até 1º output, CAC/LTV iniciais.
+	6	docs/MRD.md — Market Requirements / Benchmark
+	◦	Panorama de ferramentas parciais (CRM, automação marketing, chatbots), lacunas, diferenciais.
+	◦	Decisões: três verticais iniciais de templates (ex.: Moda, Gastronomia local, Infoproduto).
+	7	docs/OKRs_Q1_Q2.md — OKRs por trimestre
+	◦	Objetivos, KRs, hipóteses, “risks & mitigations”.
+	8	docs/PRICING_PACKAGES.md — Planos e Monetização
+	◦	Planos por Departamento (Marketing, Atendimento, Design, Dev/Automação, Dados/BI, Vendas/CRM, Finanças, Growth/Ads, Jurídico/Compliance, RH/Talentos).
+	◦	Add-ons (volume de mensagens, tokens de IA, integrações extras).
+	◦	Decisões: precificação por uso (tokens/minutos/processos) + assinado.
+	9	docs/PERSONAS_JTBD.md — Personas & Jobs-To-Be-Done
+	◦	Microempreendedor iniciante, criador solo, MEI digital, PMEs em early stage.
+	◦	Decisões: mensagens de marketing e onboarding por persona.
+
+2) UX & Conteúdo
+	10	docs/UX_SPEC.md — Especificação UX (Web first + mobile-responsive)
+	◦	Fluxos: onboarding, criar empresa, contratar departamentos, configurar agentes, ver resultados.
+	◦	Wireflows + estados vazios + casos de erro.
+	◦	Decisões: primar por “1-click setup” usando templates.
+	11	docs/DESIGN_SYSTEM.md — Design System “futuro pragmático”
+	◦	Tokens: tipografia, espaçamentos, bordas “neo-futuristas”, dark mode por padrão.
+	◦	Componentes: AppShell, Cards “Departamento”, Wizard de Configuração, Kanban de Tarefas.
+	◦	A11y: contraste, navegação teclado, ARIA.
+	12	docs/COPY_TONE_GUIDE.md — Tom & Voz (PT-BR, com en-US opcional)
+	◦	Claro, direto, anti-hype, “você no controle + IA turbo”.
+	◦	Playbooks de mensagens para onboarding, sucesso, falha, upsell.
+	13	docs/LOCALIZATION_I18N.md — i18n & l10n
+	◦	Estrutura de chaves, fallback, pluralização, moedas/formatos.
+	14	docs/TEMPLATE_LIBRARY.md — Biblioteca de Templates de Negócio
+	◦	Kits por nicho (ex.: Roupas/Moda, Hamburgueria, Estúdio de Yoga).
+	◦	Inclui: calendário de posts, prompts, páginas de captura, funis simples.
+
+3) Arquitetura & Engenharia
+	15	docs/ARCHITECTURE.md — Arquitetura de alto nível
+	◦	Diagrama C4 (Context/Container/Component), dependências, SLOs (latência < N s).
+	◦	Decisões: multi-tenant (isolamento por org_id), limites por plano.
+	16	docs/SEQUENCE_DIAGRAMS.md — Sequências críticas
+	◦	“Criar Empresa”, “Contratar Marketing”, “Agendar Posts”, “Responder WhatsApp”.
+	17	docs/DB_SCHEMA.md — Modelo de dados (ERD)
+	◦	Tenants, Users, Companies, Departments, Agents, Tools, Jobs, Schedules, Events, Logs, Billing.
+	◦	Decisões: versionamento de configurações de agente.
+	18	docs/API_SPEC_OPENAPI.yaml — API pública/privada
+	◦	Endpoints REST (e/ou GraphQL), auth (JWT), rate limits, idempotência.
+	19	docs/INTEGRATIONS_REGISTRY.md — Catálogo de integrações
+	◦	Mensageria: WhatsApp Cloud API, Telegram, E-mail.
+	◦	Social: Instagram/Facebook, TikTok, X (quando aplicável).
+	◦	Loja/Checkout: Shopify, Woo, Stripe, Mercado Pago.
+	◦	Configuração, scopes, limites, webhooks.
+	20	docs/DEPLOYMENT_PIPELINE.md — CI/CD & ambientes
+	◦	Branches → Build → Test → Scan → Deploy (Dev/Staging/Prod).
+	◦	Rollbacks, feature flags, migrações DB.
+	21	docs/COST_MODEL.md — Custo e Latência por fluxo
+	◦	Orçamento de tokens por agente, cache de respostas, LLM choice matrix (qual modelo em cada tarefa).
+	◦	Decisões: tetos de custo por cliente/plano.
+
+4) IA, Agentes & Orquestração
+	22	docs/AGENT_DEPARTMENT_CATALOG.md — Catálogo de Departamentos e Agentes
+	◦	Marketing: Social Media, Blog/SEO, Ads/Performance, Email/SMS, Brand/Copy.
+	◦	Atendimento (CX): FAQ & Inbox, WhatsApp responder, Classificação/triagem, SLA bot, Escalada humana.
+	◦	Design: Geração de criativos (estáticos/curtos), variações p/ ads, tratamento de assets.
+	◦	Dev & Automação: Integrações Zapier-like, webhooks, mini-scripts, raspagem ética.
+	◦	Dados & BI: ETL leve, dashboards, métricas norteadoras.
+	◦	Vendas/CRM: funis simples, lead scoring, respostas semi-automáticas.
+	◦	Finanças: faturas, DRE simples, projeções básicas de caixa (sem substituir contabilidade oficial).
+	◦	Growth/Ads: testes A/B, orçamento, bids, negative lists.
+	◦	Jurídico/Compliance (light): geração de políticas padrão (revisão humana recomendada).
+	◦	RH/Talentos (light): role templates, roteiros de entrevista, onboarding docs.
+	◦	Para cada agente: objetivo, inputs, outputs, tooling, limites, KPIs.
+	23	docs/ORCHESTRATOR_SPEC.md — Orquestrador Multi-Agente
+	◦	Grafo de tarefas (LangGraph) por Departamento; dependências, retries, compensações.
+	◦	Memória: curta/longa, por empresa; RAG com pgvector; redação & verificação.
+	◦	Decisões: quando chamar qual modelo, como dividir prompts, quando pedir aprovação humana.
+	24	docs/PROMPT_LIBRARY.md — Biblioteca de prompts & system messages
+	◦	Estrutura modular: system → role → tools → examples.
+	◦	Placeholders por nicho (ex.: {segmento}, {tom}, {calendário}).
+	◦	Políticas anti-alucinação, pedindo fontes quando relevante.
+	25	docs/MODEL_SELECTION.md — Seleção e fallback de modelos
+	◦	Mapeamento tarefa→modelo (ex.: geração longa vs. resumos vs. classificação).
+	◦	Cache/embedding, guardrails (moderação, PII, segurança de marca).
+	26	docs/EVAL_HARNESS.md — Avaliação de IA
+	◦	Conjuntos de teste por Departamento, métricas (factualidade, utilidade, tempo, custo), regressões.
+	◦	Human-in-the-loop (HITL) p/ aprovações e “aprender com edições do usuário”.
+	27	docs/DATASETS_POLICY.md — Dados de treino/afinamento/sintéticos
+	◦	Fontes permitidas, PII, deduplicação, geração sintética, testes de vieses.
+
+5) Segurança, Privacidade & Compliance
+	28	docs/SECURITY_BASELINE.md — Baseline de Segurança
+	◦	AuthN/AuthZ (RBAC multi-tenant), MFA, rate limiting, proteção de segredo.
+	◦	Threat modeling (STRIDE), checklist OWASP, dependabot.
+	29	docs/PRIVACY_LGPD_DPIA.md — Privacidade (LGPD-first)
+	◦	Bases legais, consentimentos, DPIA, minimização, retenção, portabilidade, anonimização.
+	◦	Decisões: políticas de logs e redacção de PII em prompts/outputs.
+	30	docs/TERMS_PRIVACY_TEMPLATES.md — Termos & Políticas
+	◦	ToS, Política de Privacidade, DPA (Data Processing Addendum) base.
+	31	docs/COMPLIANCE_INTEGRATIONS.md — Requisitos das APIs externas
+	◦	WhatsApp Cloud, redes sociais, PSPs; limites, políticas de uso, auditoria.
+
+6) Operações, SRE & Suporte
+	32	docs/OBSERVABILITY_SLO_SLI.md — Telemetria e SLOs
+	◦	Logs estruturados, tracing distribuído, métricas, dashboards prontos.
+	◦	SLOs por fluxo (ex.: geração de post < 8s, resposta WhatsApp < 3s).
+	33	docs/RUNBOOKS.md — Runbooks & Playbooks
+	◦	Incidentes comuns (quota de modelo, webhook caiu, fila travou), passos corretivos.
+	◦	Feriados/escala, RTO/RPO.
+	34	docs/SUPPORT_PLAYBOOK.md — Suporte ao cliente
+	◦	Níveis (self-service → agente humano), SLAs por plano, macros, refund casos.
+
+7) Go-to-Market & Onboarding
+	35	docs/ONBOARDING_WIZARD.md — Wizard “Empresa em minutos”
+	◦	Perguntas mínimas (segmento, canais, tom de marca), import de logos/cores.
+	◦	Geração e pré-visualização antes de publicar.
+	36	docs/ACTIVATION_METRICS.md — Aha moments & ativação
+	◦	Eventos de ativação (1º post, 1ª resposta WhatsApp, 1º lead), nudges e in-app coach.
+	37	docs/DEMO_MODE.md — Modo Demo / Sandbox
+	◦	Empresa fictícia, dados sintéticos, “try before connect”.
+	38	docs/ACADEMY_GUIDES.md — Guias curtos (micro-aulas)
+	◦	“Marketing 101 com IA”, “Como responder no WhatsApp com classe”, “SEO básico”.
+
+8) Qualidade, Testes & Segurança de Marca
+	39	docs/TEST_PLAN.md — Plano de testes
+	◦	Unit, integração, E2E (Playwright), contratos de API, smoke de deploy.
+	40	docs/LOAD_TESTING.md — Teste de carga & custo
+	◦	Cenários de pico (lote de posts, campanha massiva), estimativa de tokens.
+	41	docs/SAFETY_BRAND_GUARDRAILS.md — Moderation & Brand Safety
+	◦	Filtros de conteúdo, blacklist de termos, limites por categoria sensível, revisões humanas.
+
+9) Roadmap & Gestão
+	42	docs/ROADMAP.md — Roadmap (MVP → v0.2 → v1)
+	◦	Fase 1 (MVP): Departamentos Marketing & Atendimento + WhatsApp + Templates.
+	◦	Fase 2: Design + Ads + CRM básico.
+	◦	Fase 3: BI/Dados + Finanças light + Marketplace de add-ons.
+	43	docs/DELIVERY_PLAN.md — Plano de Entregas & Milestones
+	◦	Gantt simples, dependências, critérios de aceite por épico.
+	44	docs/RISKS_ASSUMPTIONS.md — Riscos & Hipóteses
+	◦	Técnicos (APIs sociais), legais, produto (adoção, preço), mitigação.
+
+10) Especificações por Departamento (MVP profundo)
+Cada doc abaixo detalha agentes internos, inputs/outputs, prompts base, métricas do agente, integrações, limites de custo/latência e fluxos UI.
+	45	docs/DEPT_MARKETING_SPEC.md
+	◦	Agentes: Social (calendário + copy + imagem), Blog/SEO, Ads/Performance, Email/SMS, Brand/Copy.
+	◦	Integrações: IG/FB, TikTok, X, e-mail.
+	◦	KPIs: posts publicados, alcance, CTR, custo/lead.
+	46	docs/DEPT_CX_SPEC.md (Atendimento)
+	◦	Agentes: WhatsApp Responder, FAQ Builder, Classificação & Roteamento, SLA Bot, Escalada Humana.
+	◦	Integrações: WhatsApp Cloud API, Telegram, e-mail.
+	◦	KPIs: FRT, CSAT, taxa de resolução.
+	47	docs/DEPT_DESIGN_SPEC.md
+	◦	Agentes: Criativos para Social/Ads, variações de banner, tratamento de imagem, guidelines de marca.
+	◦	Entradas: logo/cores/target; Saídas: assets em múltiplos formatos.
+	◦	KPIs: tempo de geração, taxa de uso/aceitação.
+	48	docs/DEPT_DEV_AUTOMATION_SPEC.md
+	◦	Agentes: Conectores (Shopify/Sheets/Notion), webhooks, automações low-code, raspagem ética.
+	◦	KPIs: tarefas automatizadas/mês, falhas por 1k execuções.
+	49	docs/DEPT_DATA_BI_SPEC.md
+	◦	Agentes: ETL leve, dashboard de marketing/vendas/atendimento, insights automáticos.
+	◦	KPIs: tempo para 1º dashboard, uso semanal.
+	50	docs/DEPT_SALES_CRM_SPEC.md
+	◦	Agentes: Captura de lead, funil, follow-ups, roteiros de DM.
+	◦	KPIs: leads qualificados, conversão por etapa.
+	51	docs/DEPT_FINANCE_SPEC.md (light)
+	◦	Agentes: Faturamento/billing, DRE simples, projeções básicas.
+	◦	Aviso: não substitui contador; outputs “assistivos”.
+	52	docs/DEPT_GROWTH_ADS_SPEC.md
+	◦	Agentes: Orçamentação, testes A/B, sugestão de criativos/segmentos, negative lists.
+	◦	KPIs: CPA, ROAS inicial.
+(Outros departamentos “light” opcionais para V2: Jurídico/Compliance, RH/Talentos.)
+
+11) Operações Comerciais & Marketplace (V2+)
+	53	docs/MARKETPLACE_SPEC.md — Loja de Add-ons/Agentes premium
+	◦	Terceiros oferecendo “pacotes” (ex.: “Pacote Roupas Streetwear”).
+	◦	Curadoria, revenue share, aprovação de templates.
+	54	docs/PARTNERSHIPS.md — Parcerias estratégicas
+	◦	Contadores/Agências que plugam atendimento humano como escalada.
+
+12) Anexos úteis para Claude
+	55	docs/EXAMPLES_PROMPTS.md — Exemplos prontos por nicho
+	56	docs/TEST_FIXTURES.md — Dados sintéticos para E2E
+	57	docs/LEGAL_TEMPLATES/ — Modelos (ToS/Privacy/DPA)
+	58	docs/FIGMA_LINKS.md — Links e export guidelines (opcional)
+	59	docs/SECRETS_TEMPLATE.env.example — Chaves necessárias com comentário
+
+Estrutura sugerida do repositório
+/docs
+  INDEX.md
+  PRD.md
+  MRD.md
+  OKRs_Q1_Q2.md
+  PRICING_PACKAGES.md
+  PERSONAS_JTBD.md
+  UX_SPEC.md
+  DESIGN_SYSTEM.md
+  COPY_TONE_GUIDE.md
+  LOCALIZATION_I18N.md
+  TEMPLATE_LIBRARY.md
+  ARCHITECTURE.md
+  SEQUENCE_DIAGRAMS.md
+  DB_SCHEMA.md
+  API_SPEC_OPENAPI.yaml
+  INTEGRATIONS_REGISTRY.md
+  DEPLOYMENT_PIPELINE.md
+  COST_MODEL.md
+  AGENT_DEPARTMENT_CATALOG.md
+  ORCHESTRATOR_SPEC.md
+  PROMPT_LIBRARY.md
+  MODEL_SELECTION.md
+  EVAL_HARNESS.md
+  DATASETS_POLICY.md
+  SECURITY_BASELINE.md
+  PRIVACY_LGPD_DPIA.md
+  TERMS_PRIVACY_TEMPLATES.md
+  COMPLIANCE_INTEGRATIONS.md
+  OBSERVABILITY_SLO_SLI.md
+  RUNBOOKS.md
+  SUPPORT_PLAYBOOK.md
+  ONBOARDING_WIZARD.md
+  ACTIVATION_METRICS.md
+  DEMO_MODE.md
+  ACADEMY_GUIDES.md
+  TEST_PLAN.md
+  LOAD_TESTING.md
+  SAFETY_BRAND_GUARDRAILS.md
+  ROADMAP.md
+  DELIVERY_PLAN.md
+  RISKS_ASSUMPTIONS.md
+  DEPT_MARKETING_SPEC.md
+  DEPT_CX_SPEC.md
+  DEPT_DESIGN_SPEC.md
+  DEPT_DEV_AUTOMATION_SPEC.md
+  DEPT_DATA_BI_SPEC.md
+  DEPT_SALES_CRM_SPEC.md
+  DEPT_FINANCE_SPEC.md
+  DEPT_GROWTH_ADS_SPEC.md
+  MARKETPLACE_SPEC.md
+  PARTNERSHIPS.md
+  EXAMPLES_PROMPTS.md
+  TEST_FIXTURES.md
+  FIGMA_LINKS.md
+  SECRETS_TEMPLATE.env.example
+/infra
+  terraform/...
+/api
+  openapi/...
+/web
+  ...
+/backend
+  ...
+
+Ordem recomendada de produção (para Claude)
+	1	PRD.md → UX_SPEC.md → DESIGN_SYSTEM.md → ARCHITECTURE.md
+	2	DB_SCHEMA.md → API_SPEC_OPENAPI.yaml → ORCHESTRATOR_SPEC.md
+	3	AGENT_DEPARTMENT_CATALOG.md → DEPT_*_SPEC.md (Marketing & CX p/ MVP)
+	4	PROMPT_LIBRARY.md → MODEL_SELECTION.md → EVAL_HARNESS.md
+	5	SECURITY_BASELINE.md → PRIVACY_LGPD_DPIA.md → INTEGRATIONS_REGISTRY.md
+	6	DEPLOYMENT_PIPELINE.md → OBSERVABILITY_SLO_SLI.md → RUNBOOKS.md
+	7	TEST_PLAN.md → LOAD_TESTING.md → SAFETY_BRAND_GUARDRAILS.md
+	8	PRICING_PACKAGES.md → ONBOARDING_WIZARD.md → TEMPLATE_LIBRARY.md
+
+Se essa lista mestre estiver alinhada com a sua visão, me diga “aprovo” e eu começo pelo PRD.md + UX_SPEC.md com o recorte do MVP (Marketing + Atendimento) e já deixo prompts e diagramas prontos para Claude codar.
