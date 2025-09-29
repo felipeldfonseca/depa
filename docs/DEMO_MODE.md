@@ -1,31 +1,31 @@
-# Demo Mode & Sandbox Environment
-## AI Departments Platform
+# Product Creation Demo & Sandbox
+## Depa - Digital Product Factory Platform
 
-**Version:** 1.0  
-**Date:** 2025-09-13  
-**Owner:** Felipe PM + Claude  
-**Status:** APPROVED  
+**Version:** 2.0  
+**Date:** 2025-09-28  
+**Owner:** Felipe PM + Claude AI  
+**Status:** UPDATED FOR DIGITAL PRODUCT FACTORY MODEL  
 
 ---
 
 ## Demo Mode Overview
 
 ### Purpose & Strategy
-Demo Mode provides a risk-free, fully functional sandbox environment where potential customers can experience the AI Departments Platform without creating an account or providing business information. This drives conversion by demonstrating immediate value while maintaining cost-efficient operations.
+Demo Mode provides a risk-free, fully functional sandbox environment where potential creators can experience the Digital Product Factory without creating an account or providing personal information. This drives conversion by demonstrating immediate product creation value while maintaining cost-efficient operations.
 
 ### Business Objectives
-- **Conversion Optimization**: Increase trial-to-paid conversion by 40%
-- **Sales Enablement**: Provide powerful demos for sales conversations
-- **Product Education**: Let customers discover features organically
-- **Cost Control**: Limit demo usage while maximizing value demonstration
-- **Trust Building**: Show platform capabilities without commitment barriers
+- **Creator Conversion**: Increase demo-to-paid conversion by 50%
+- **Product Education**: Let creators experience rapid product creation
+- **Value Demonstration**: Show 1-3 day product creation in real-time
+- **Cost Control**: Limit demo usage while maximizing creation experience
+- **Trust Building**: Show AI capabilities without commitment barriers
 
 ### Demo Philosophy
-- **Instant Value**: Demonstrate business value within 60 seconds
-- **Realistic Experience**: Use genuine Brazilian business scenarios
-- **Cost-Conscious**: Efficient demo environment with smart limits
-- **Educational**: Guide users through high-impact features
-- **Conversion-Focused**: Clear path from demo to paid subscription
+- **Instant Creation**: Demonstrate product generation within 60 seconds
+- **Realistic Experience**: Use authentic creator scenarios and niches
+- **Global Appeal**: Showcase international creator success stories
+- **Educational**: Guide users through high-impact creation features
+- **Conversion-Focused**: Clear path from demo to product publishing
 
 ---
 

@@ -1,95 +1,95 @@
 # User Personas & Jobs-To-Be-Done
-## AI Departments Platform
+## Depa - Digital Product Factory Platform
 
-**Version:** 1.0  
-**Date:** 2025-09-13  
+**Version:** 2.0  
+**Date:** 2025-09-28  
 **Owner:** Felipe PM  
-**Research Base:** 500 interviews, 50 in-depth sessions  
-**Status:** VALIDATED  
+**Research Base:** 300 digital creator interviews, 25 in-depth sessions  
+**Status:** UPDATED FOR DIGITAL PRODUCT FACTORY MODEL  
 
 ---
 
 ## Research Methodology
 
 ### Primary Research (2024)
-- **Quantitative Survey**: 500 MEI entrepreneurs across Brazil
-- **Qualitative Interviews**: 50 in-depth sessions (45-60 minutes each)
-- **Observational Studies**: 20 entrepreneurs shadowed for full business day
-- **Regional Coverage**: São Paulo (40%), Rio de Janeiro (25%), Other capitals (35%)
+- **Quantitative Survey**: 300 digital product creators across US, UK, Canada
+- **Qualitative Interviews**: 25 in-depth sessions (60-90 minutes each)
+- **Creator Journey Studies**: 15 creators followed through full product launch cycle
+- **Platform Coverage**: Whop (35%), Gumroad (30%), Teachable (25%), Others (10%)
 
 ### Key Research Questions
-1. What are the biggest operational challenges in running a micro-business?
-2. How do entrepreneurs currently handle marketing and customer service?
-3. What tools do they use and what frustrates them most?
-4. How much would they pay for an integrated solution?
-5. What would make them switch from current tools?
+1. What prevents creators from launching digital products consistently?
+2. How long does it currently take from idea to first sale?
+3. What's the biggest barrier to creating multiple products?
+4. How much would creators pay to reduce time-to-market by 90%?
+5. What would make creators switch from their current creation process?
 
 ---
 
-## Primary Persona: Marina - The Ambitious Micro-Entrepreneur
+## Primary Persona: Alex - The Analysis Paralysis Creator
 
 ### Demographics
-- **Age**: 32 years old
-- **Location**: São Paulo (Zona Sul)
-- **Education**: University degree (Administration)
-- **Family**: Married, 1 child (5 years old)
-- **Income**: R$8,000-15,000/month (combined household)
-- **Business**: Online fashion boutique (2 years running)
+- **Age**: 29 years old
+- **Location**: Austin, Texas (remote-friendly)
+- **Education**: Marketing degree + various online certifications
+- **Family**: Single, no dependents
+- **Income**: $65,000/year (marketing manager)
+- **Side Income Goal**: $3,000-5,000/month from digital products
 
-### Business Profile
-- **Business Type**: Fashion/apparel resale and custom pieces
-- **Revenue**: R$25K-40K/month
-- **Team**: Solo entrepreneur + occasional freelance photographer
-- **Channels**: Instagram (8K followers), WhatsApp Business, small physical showroom
-- **Growth Stage**: Established but wants to scale without hiring
+### Creator Profile
+- **Current Status**: Has 5+ product ideas but launched 0 products
+- **Experience**: 18 months researching digital product creation
+- **Skills**: Strong in marketing and content creation, weak in execution
+- **Platforms**: Considering Whop, Gumroad, researched Teachable extensively
+- **Growth Stage**: Pre-launch but well-researched
 
 ### Technology Profile
-- **Smartphone**: iPhone 12 (primary device for everything)
-- **Computer Usage**: MacBook for admin tasks 2-3 hours/day
-- **Social Media**: Instagram native, Facebook reluctantly, TikTok experimenting
-- **Digital Comfort**: High - adopts new apps quickly if they solve real problems
-- **Current Tools**: Instagram, WhatsApp Business, Canva, Excel, mercado livre
+- **Computer**: MacBook Pro (primary work device)
+- **Mobile**: iPhone for social media and quick tasks
+- **Social Media**: LinkedIn (professional), Twitter (following creators), YouTube (learning)
+- **Digital Comfort**: Very high - early adopter of new creator tools
+- **Current Tools**: Notion, Canva, ChatGPT, Loom, Google Drive, various course platforms
 
 ### Daily Routine & Pain Points
 
-#### Morning (7am-11am): Content & Admin
-- **7:30am**: Check overnight WhatsApp messages while having coffee
-- **8:00am**: Try to create Instagram content for the day (often gets skipped)
-- **9:00am**: Process orders, update inventory in spreadsheet
-- **10:00am**: Respond to customer inquiries on Instagram DMs
-- **Pain**: "I spend 2 hours every morning just catching up, not growing"
+#### Morning (7am-9am): Day Job Prep
+- **7:00am**: Coffee and browse Twitter/LinkedIn for creator content
+- **7:30am**: Quickly check progress on "someday" product ideas
+- **8:00am**: Get ready for marketing manager day job
+- **8:30am**: Commute (often listening to entrepreneurship podcasts)
+- **Pain**: "Every morning I see other creators launching while I'm still planning"
 
-#### Afternoon (11am-4pm): Business Operations
-- **11:00am**: Source new products, negotiate with suppliers
-- **1:00pm**: Lunch break (often interrupted by customer messages)
-- **2:00pm**: Fulfillment - packaging and shipping orders
-- **3:30pm**: More customer service (returns, questions, complaints)
-- **Pain**: "I'm always reactive, never proactive with my marketing"
+#### Work Day (9am-6pm): Corporate Marketing Manager
+- **9am-12pm**: Marketing campaigns, team meetings, strategy sessions
+- **12pm-1pm**: Lunch break spent researching product creation tools
+- **1pm-6pm**: More corporate work, but thinking about side projects
+- **Pain**: "I'm helping someone else's business grow while mine stays stuck in my head"
 
-#### Evening (6pm-10pm): Family + Overflow Work
-- **6:00pm**: Family time, dinner, help with homework
-- **8:00pm**: After daughter sleeps, catch up on social media
-- **9:00pm**: Plan tomorrow's content (when energy allows)
-- **10:00pm**: Respond to late customer messages
-- **Pain**: "Work never stops, it's bleeding into family time"
+#### Evening (6pm-11pm): Creator Research & Planning
+- **6:30pm**: Dinner while watching "How I made $10K" YouTube videos
+- **7:30pm**: Open Notion to plan product ideas (again)
+- **8:00pm**: Get overwhelmed by complexity, switch to Netflix
+- **9:30pm**: Guilt-browse more creator success stories
+- **10:30pm**: Promise to "start tomorrow" and go to bed
+- **Pain**: "I have all the knowledge but can't seem to execute anything"
 
 ### Jobs-To-Be-Done Framework
 
 #### Functional Jobs
-1. **"When I wake up, I want to know my business ran smoothly overnight, so I can focus on growth instead of firefighting"**
-   - Current solution: Manual checking of multiple apps
-   - Desired outcome: Automated overnight operations summary
-   - Success metric: <10 minutes morning catch-up time
+1. **"When I have a product idea, I want to see it live on a marketplace within days, so I can validate demand instead of endlessly planning"**
+   - Current solution: Months of research, planning, and manual creation
+   - Desired outcome: Rapid idea-to-market execution
+   - Success metric: <72 hours from concept to live product
 
-2. **"When I'm with my family, I want my customers to still get professional service, so I don't lose sales or damage my reputation"**
-   - Current solution: Interrupting family time for urgent messages
-   - Desired outcome: 24/7 professional customer service
-   - Success metric: <2 hour response time without personal intervention
+2. **"When I'm scared to commit months to one idea, I want to test multiple concepts quickly, so I can find winners through volume rather than guessing"**
+   - Current solution: Betting everything on one extensively researched idea
+   - Desired outcome: Portfolio approach with rapid testing
+   - Success metric: 5+ products launched per month
 
-3. **"When I have a few spare minutes, I want to create a week's worth of marketing content, so I'm not stressed about posting daily"**
-   - Current solution: Daily content creation or skipping posts
-   - Desired outcome: Batch content creation with automated scheduling
-   - Success metric: 1 hour work = 1 week of marketing content
+3. **"When I see other creators succeeding, I want to take action immediately, so I don't get stuck in research mode again"**
+   - Current solution: Consuming content but never creating
+   - Desired outcome: Immediate execution capability
+   - Success metric: Same-day product creation after inspiration
 
 #### Emotional Jobs
 1. **"Feel like a professional business owner, not just someone selling from home"**

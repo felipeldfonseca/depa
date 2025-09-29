@@ -1,24 +1,24 @@
 # OKRs Q1 & Q2 2025
-## AI Departments Platform
+## Depa - Digital Product Factory Platform
 
-**Version:** 1.0  
-**Date:** 2025-09-13  
+**Version:** 2.0  
+**Date:** 2025-09-28  
 **Owner:** Felipe PM  
 **Period:** Q1 2025 (Jan-Mar) & Q2 2025 (Apr-Jun)  
-**Status:** DRAFT  
+**Status:** UPDATED FOR DIGITAL PRODUCT FACTORY MODEL  
 
 ---
 
 ## Executive Summary
 
-These OKRs focus on launching our MVP with Marketing and Customer Service departments, achieving product-market fit, and building the foundation for rapid scaling in H2 2025. Our north star is creating 1,000 active companies by end of Q2.
+These OKRs focus on launching our Digital Product Factory MVP, enabling creators to launch products in 1-3 days, and achieving product-market fit in the global creator economy. Our north star is facilitating 5,000+ digital product launches by end of Q2.
 
 ---
 
 ## Q1 2025 OKRs: Foundation & Launch
 
-### Objective 1: Launch Production-Ready MVP
-**Rationale:** Deliver core functionality that enables micro-entrepreneurs to start businesses in minutes
+### Objective 1: Launch Production-Ready Digital Product Factory
+**Rationale:** Deliver core functionality that enables creators to launch products in 1-3 days
 
 #### Key Results:
 1. **Deploy MVP to production** with 99.5% uptime SLA
@@ -26,33 +26,33 @@ These OKRs focus on launching our MVP with Marketing and Customer Service depart
    - **Success Criteria:** <5 minutes downtime per week
    - **Owner:** Tech Team (Claude)
 
-2. **Complete end-to-end user journey** from signup to first output in <15 minutes
-   - **Measurement:** User analytics, funnel tracking
-   - **Success Criteria:** 80% of users complete onboarding successfully
+2. **Complete end-to-end product creation journey** from idea to live marketplace in <72 hours
+   - **Measurement:** Creator analytics, product launch funnel tracking
+   - **Success Criteria:** 80% of creators launch their first product within 72 hours
    - **Owner:** Product Team (Felipe)
 
-3. **Integrate all MVP dependencies** (WhatsApp, Instagram/Facebook, payments)
+3. **Integrate all MVP dependencies** (Whop marketplace, AI providers, payment processing)
    - **Measurement:** Integration health dashboard, API success rates
-   - **Success Criteria:** >99% API success rate, <3 second response times
+   - **Success Criteria:** >99% API success rate, <30 second product generation times
    - **Owner:** Tech Team (Claude)
 
 ### Objective 2: Achieve Initial Product-Market Fit
-**Rationale:** Validate core value proposition with early adopters
+**Rationale:** Validate core value proposition with digital product creators
 
 #### Key Results:
-1. **Acquire 100 active companies** using both Marketing and Customer Service departments
-   - **Measurement:** Company dashboard analytics, department activation rates
-   - **Success Criteria:** Companies generating >3 posts/week + handling >10 WhatsApp messages/week
+1. **Acquire 250 active creators** launching products through the platform
+   - **Measurement:** Creator dashboard analytics, product launch rates
+   - **Success Criteria:** Creators launching >2 products/month with >15% generating $100+ in first 30 days
    - **Owner:** Growth Team (Felipe)
 
-2. **Achieve 4.5+ NPS score** among active users
+2. **Achieve 4.5+ NPS score** among active creators
    - **Measurement:** Monthly NPS surveys, qualitative feedback
-   - **Success Criteria:** >50% promoters, <10% detractors
+   - **Success Criteria:** >60% promoters, <5% detractors
    - **Owner:** Product Team (Felipe)
 
-3. **Generate $10K MRR** with >90% retention rate
+3. **Generate $25K MRR** from creator subscriptions with >85% retention rate
    - **Measurement:** Billing system analytics, churn tracking
-   - **Success Criteria:** Month-over-month revenue growth >30%
+   - **Success Criteria:** Month-over-month revenue growth >40%
    - **Owner:** Business Team (Felipe)
 
 ### Objective 3: Establish Operational Excellence

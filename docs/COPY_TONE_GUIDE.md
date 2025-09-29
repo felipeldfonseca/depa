@@ -1,56 +1,80 @@
-# Copy & Tone Guide
-## AI Departments Platform
+# Creator Voice & Copy Guide
+## Depa - Digital Product Factory Platform
 
-**Version:** 1.0  
-**Date:** 2025-09-13  
-**Owner:** Felipe PM  
-**Languages:** Portuguese (BR) primary, English (US) secondary  
-**Status:** APPROVED  
+**Version:** 2.0  
+**Date:** 2025-09-28  
+**Owner:** Felipe PM + Claude AI  
+**Languages:** English (US) primary, Global expansion ready  
+**Status:** UPDATED FOR DIGITAL PRODUCT FACTORY MODEL  
 
 ---
 
-## Brand Voice & Personality
+## Creator-Focused Brand Voice & Personality
 
 ### Core Voice Characteristics
 
-#### 1. Confiável (Trustworthy)
-- **What it means**: Reliable, honest, transparent about capabilities and limitations
-- **How it sounds**: "Seu negócio em boas mãos" (Your business in good hands)
-- **What to avoid**: Overpromising, hype language, unrealistic claims
-- **Example**: "Nossa IA trabalha 24/7, mas sempre com supervisão humana quando necessário"
+#### 1. Inspiring (Inspirational)
+- **What it means**: Motivates creators to overcome analysis paralysis and take action
+- **How it sounds**: "Turn your ideas into income in days, not months"
+- **What to avoid**: Unrealistic promises, get-rich-quick schemes, false inspiration
+- **Example**: "Your expertise deserves to be shared with the world - let's make it happen"
 
-#### 2. Empoderador (Empowering)
-- **What it means**: Makes entrepreneurs feel capable and in control
-- **How it sounds**: "Você no controle, IA na execução" (You in control, AI in execution)
-- **What to avoid**: Condescending, talking down, assuming lack of knowledge
-- **Example**: "Você define a estratégia, nós cuidamos da execução"
+#### 2. Empowering (Capability-Building)
+- **What it means**: Makes creators feel capable of success regardless of experience
+- **How it sounds**: "You bring the knowledge, we handle the creation"
+- **What to avoid**: Condescending, assuming technical inability, gatekeeping
+- **Example**: "First-time creator or seasoned pro - our AI adapts to your level"
 
-#### 3. Pragmático (Pragmatic)
-- **What it means**: Focused on practical results, not theoretical possibilities
-- **How it sounds**: Clear, direct, results-oriented
-- **What to avoid**: Academic jargon, abstract concepts, overthinking
-- **Example**: "Menos planilhas, mais vendas"
+#### 3. Results-Driven (Pragmatic)
+- **What it means**: Focused on tangible outcomes: published products and revenue
+- **How it sounds**: Clear, direct, outcome-oriented
+- **What to avoid**: Vague promises, process-focused language, theoretical benefits
+- **Example**: "From concept to cash flow in 72 hours"
 
-#### 4. Acessível (Accessible)
-- **What it means**: Easy to understand, welcoming to all skill levels
-- **How it sounds**: Conversational, warm, human
-- **What to avoid**: Technical jargon, corporate speak, elitist language
-- **Example**: "Simples como mandar um WhatsApp"
+#### 4. Globally Accessible (Inclusive)
+- **What it means**: Welcoming to creators worldwide, regardless of background
+- **How it sounds**: Conversational, warm, internationally aware
+- **What to avoid**: Cultural assumptions, region-specific references, exclusionary language
+- **Example**: "Whether you're in Tokyo or Toronto, your digital product can reach the world"
 
 ### Voice Personality Matrix
 
 | Trait | We Are | We Are Not |
 |-------|--------|------------|
-| **Confident** | Seguro das nossas capacidades | Arrogante ou presunçoso |
-| **Friendly** | Caloroso e acolhedor | Falso ou superficial |
-| **Professional** | Competente e confiável | Formal demais ou distante |
-| **Direct** | Claro e objetivo | Rude ou insensível |
-| **Innovative** | Vanguarda tecnológica | Experimental sem propósito |
-| **Brazilian** | Culturalmente relevante | Estereotipado ou caricato |
+| **Confident** | Certain about AI capabilities and results | Arrogant or overconfident about success |
+| **Supportive** | Encouraging and understanding creator challenges | Pushy or dismissive of concerns |
+| **Professional** | Credible and marketplace-ready | Corporate or impersonal |
+| **Direct** | Clear about timelines and outcomes | Blunt or insensitive to creator fears |
+| **Innovative** | Cutting-edge technology for creators | Experimental without purpose |
+| **Global** | Internationally minded and inclusive | Culturally tone-deaf or exclusive |
 
 ---
 
-## Tone Guidelines by Context
+## Tone Guidelines by Creator Context
+
+### New Creator Onboarding
+- **Tone**: Encouraging, reassuring, step-by-step guidance
+- **Language**: Simple, non-technical, confidence-building
+- **Focus**: "You can do this" messaging with clear next steps
+- **Example**: "Creating your first digital product feels overwhelming? We'll guide you through each step."
+
+### Experienced Creator Efficiency  
+- **Tone**: Respectful, efficiency-focused, advanced features
+- **Language**: Professional, capability-assuming, time-saving emphasis
+- **Focus**: Speed, scalability, advanced tools
+- **Example**: "Scale your product creation with AI-powered batch processing and multi-marketplace publishing."
+
+### Creator Success Stories
+- **Tone**: Celebratory, authentic, inspiring without being boastful
+- **Language**: Specific outcomes, relatable challenges overcome
+- **Focus**: Real results, transformation stories, community building
+- **Example**: "Sarah went from 6-month product development to launching 3 ebooks in her first week."
+
+### Product Marketing & Sales Copy
+- **Tone**: Benefit-focused, urgency-appropriate, conversion-optimized
+- **Language**: Clear value propositions, specific outcomes, marketplace-ready
+- **Focus**: ROI, speed, quality, marketplace success
+- **Example**: "Transform your expertise into income-generating digital products in 72 hours."
 
 ### 1. Onboarding & First Impressions
 

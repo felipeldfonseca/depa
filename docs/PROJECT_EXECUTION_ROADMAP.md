@@ -1,25 +1,25 @@
 # Project Execution Roadmap
-## Depa - AI Departments Platform Development Plan
+## Depa - Digital Product Factory Development Plan
 
-**Version:** 1.0  
-**Date:** 2025-09-15  
+**Version:** 2.0  
+**Date:** 2025-09-28  
 **Owner:** Felipe PM + Claude  
-**Status:** DAY 1 COMPLETE - IN EXECUTION  
+**Status:** UPDATED FOR PRODUCT FACTORY MODEL  
 
 ---
 
 ## Executive Summary
 
-This is the master execution roadmap for building the AI Departments Platform. Every task is designed to support our meta-strategy: Felipe + Claude building a revolutionary AI business platform while using our own AI departments for development and marketing.
+This is the master execution roadmap for building the world's fastest digital product creation platform. Every task is designed to support our revolutionary strategy: create a factory that turns ideas into live marketplace products in 1-3 days, proving the platform's capabilities through actual product launches.
 
-**Project Philosophy:** Build fast, build smart, build transparently - demonstrate AI capabilities through our own development process.
+**Project Philosophy:** Build the product factory, then use it to create real products that demonstrate its speed and effectiveness.
 
-**Timeline:** 6 months to MVP launch with first paying customers.
+**Timeline:** 4 months to MVP launch with creators generating revenue through the platform.
 
 ---
 
 ## Phase 1: Foundation Setup (Weeks 1-2)
-### 🎯 Goal: Complete development environment and project foundation
+### 🎯 Goal: Complete development environment and Whop marketplace integration foundation
 
 ### Week 1: Environment & Infrastructure Setup
 
@@ -57,121 +57,123 @@ This is the master execution roadmap for building the AI Departments Platform. E
   - [ ] Configure Secret Manager for API keys
   - [ ] Setup basic monitoring and alerting
 
-#### Day 6-7: API Keys & External Services Setup
+#### Day 6-7: API Keys & Marketplace Integration Setup
 - [ ] **Acquire and Configure API Keys**
   - [ ] Get OpenAI API key and setup billing limits
   - [ ] Get Anthropic Claude API key
   - [ ] Get Google AI (Gemini) API key
-  - [ ] Setup WhatsApp Business API account
-  - [ ] Configure development webhook endpoints for WhatsApp
-  - [ ] Setup email service (start with Gmail SMTP for development)
+  - [ ] Setup Whop marketplace API access and developer account
+  - [ ] Configure Whop webhook endpoints for sales notifications
+  - [ ] Setup Stripe API for subscription billing
   - [ ] Get basic analytics accounts (Google Analytics, Hotjar)
   - [ ] Document all API keys in Secret Manager
   - [ ] Test all API connections with simple health checks
+  - [ ] Test Whop product creation and publishing flow
 
 ### Week 2: Core Architecture Implementation
 
 #### Day 8-10: Backend Foundation (FastAPI)
-- [ ] **Create FastAPI Application Structure**
-  - [ ] Initialize FastAPI project with proper folder structure
-  - [ ] Setup database models using SQLAlchemy (User, Business, Department, etc.)
+- [ ] **Create Product Factory API Structure**
+  - [ ] Initialize FastAPI project with product-focused folder structure
+  - [ ] Setup database models using SQLAlchemy (Creator, Product, Workflow, etc.)
   - [ ] Configure Alembic for database migrations
-  - [ ] Implement authentication system (JWT tokens, refresh tokens)
-  - [ ] Create basic CRUD operations for core entities
-  - [ ] Setup Redis for session management and caching
+  - [ ] Implement creator authentication system (JWT tokens, refresh tokens)
+  - [ ] Create basic CRUD operations for products and workflows
+  - [ ] Setup Redis for workflow state management and caching
   - [ ] Implement CORS configuration for frontend integration
-  - [ ] Create health check endpoints
+  - [ ] Create health check and system status endpoints
   - [ ] Setup logging and error handling middleware
-  - [ ] Configure pydantic models for request/response validation
-  - [ ] Test all endpoints with automated tests
+  - [ ] Configure pydantic models for product creation validation
+  - [ ] Test all core product management endpoints
 
 #### Day 11-12: Frontend Foundation (Next.js)
-- [ ] **Create Next.js Application Structure**
+- [ ] **Create Product Factory Dashboard**
   - [ ] Initialize Next.js 14 project with TypeScript
-  - [ ] Setup Tailwind CSS with design system configuration
-  - [ ] Configure next-auth for authentication
-  - [ ] Create basic page structure and routing
-  - [ ] Implement responsive layout components
-  - [ ] Setup state management (Zustand or React Context)
-  - [ ] Configure API client for backend communication
-  - [ ] Implement error boundaries and loading states
-  - [ ] Create reusable UI components (buttons, forms, cards)
-  - [ ] Setup form validation with react-hook-form + zod
-  - [ ] Test frontend builds and deployment
+  - [ ] Setup Tailwind CSS with modern design system
+  - [ ] Configure next-auth for creator authentication
+  - [ ] Create product-focused page structure and routing
+  - [ ] Implement responsive dashboard layout components
+  - [ ] Setup state management for product creation workflows
+  - [ ] Configure API client for product factory backend
+  - [ ] Implement error boundaries and loading states for product creation
+  - [ ] Create reusable UI components for product management
+  - [ ] Setup form validation for product creation inputs
+  - [ ] Test frontend builds and deployment pipeline
 
-#### Day 13-14: AI Services Foundation
-- [ ] **Create AI Orchestration Service**
+#### Day 13-14: AI Product Creation Service
+- [ ] **Create AI Product Generation Service**
   - [ ] Setup separate AI service application (FastAPI)
   - [ ] Implement multi-provider AI client (OpenAI, Anthropic, Google)
-  - [ ] Create cost optimization routing (80% Gemini, 20% premium models)
-  - [ ] Implement prompt template system
-  - [ ] Setup conversation context management
-  - [ ] Create AI safety and content filtering
-  - [ ] Implement rate limiting and queue management
-  - [ ] Setup monitoring for AI usage and costs
-  - [ ] Create fallback mechanisms for API failures
-  - [ ] Test AI responses for all supported use cases
-  - [ ] Document AI service API endpoints
+  - [ ] Create cost optimization routing for product creation workflows
+  - [ ] Implement product-specific prompt template system
+  - [ ] Setup product creation workflow orchestration
+  - [ ] Create content quality assessment and filtering
+  - [ ] Implement rate limiting and generation queue management
+  - [ ] Setup monitoring for AI usage and product creation costs
+  - [ ] Create fallback mechanisms for generation failures
+  - [ ] Test AI responses for all product types (ebooks, courses, templates)
+  - [ ] Document AI product generation API endpoints
 
 ---
 
-## Phase 2: Core Features Development (Weeks 3-8)
-### 🎯 Goal: Implement essential platform features and first AI departments
+## Phase 2: Core Product Factory Development (Weeks 3-6)
+### 🎯 Goal: Implement product creation workflows and Whop marketplace integration
 
-### Week 3: Authentication & User Management
+### Week 3: Creator Authentication & Whop Integration
 
-#### Day 15-17: User Authentication System
-- [ ] **Complete Authentication Flow**
-  - [ ] Implement user registration with email verification
+#### Day 15-17: Creator Authentication System
+- [ ] **Complete Creator Authentication Flow**
+  - [ ] Implement creator registration with email verification
   - [ ] Create login/logout functionality with JWT tokens
   - [ ] Add password reset flow with secure tokens
   - [ ] Implement session management with refresh tokens
-  - [ ] Add social login options (Google, LinkedIn)
-  - [ ] Create user profile management
-  - [ ] Implement RBAC (Role-Based Access Control)
-  - [ ] Add audit logging for authentication events
-  - [ ] Setup multi-factor authentication (optional)
+  - [ ] Add social login options (Google, GitHub for creators)
+  - [ ] Create creator profile management
+  - [ ] Implement subscription-based access control
+  - [ ] Add audit logging for creator actions
+  - [ ] Setup optional multi-factor authentication
   - [ ] Test authentication security and edge cases
 
-#### Day 18-19: Business Profile Setup
-- [ ] **Business Onboarding Flow**
-  - [ ] Create business registration wizard
-  - [ ] Implement business profile management
-  - [ ] Add business verification process
-  - [ ] Setup business settings and preferences
-  - [ ] Create industry/category selection
-  - [ ] Implement business logo and branding uploads
-  - [ ] Add business hours and contact information
-  - [ ] Setup default business templates
-  - [ ] Create business dashboard overview
-  - [ ] Test complete onboarding user experience
+#### Day 18-19: Whop Marketplace Integration
+- [ ] **Whop API Integration Foundation**
+  - [ ] Implement Whop OAuth authentication flow
+  - [ ] Create Whop API client with error handling
+  - [ ] Setup webhook handlers for Whop events
+  - [ ] Implement product creation on Whop marketplace
+  - [ ] Add product management and updates via Whop API
+  - [ ] Setup sales and analytics data sync from Whop
+  - [ ] Create marketplace connection status monitoring
+  - [ ] Implement multiple Whop account support
+  - [ ] Add Whop product URL generation and tracking
+  - [ ] Test complete Whop integration workflow
 
-#### Day 20-21: Department Selection & Configuration
-- [ ] **Department Management System**
-  - [ ] Create department catalog display
-  - [ ] Implement department activation/deactivation
-  - [ ] Setup department-specific configuration
-  - [ ] Create department pricing and billing logic
-  - [ ] Implement department customization options
-  - [ ] Add department performance metrics tracking
-  - [ ] Create department integration settings
-  - [ ] Setup department-specific permissions
-  - [ ] Test department lifecycle management
+#### Day 20-21: Product Creation Workflow Foundation
+- [ ] **Product Creation System**
+  - [ ] Create product type selection (ebook, course, template, community)
+  - [ ] Implement product creation wizard interface
+  - [ ] Setup workflow state management and persistence
+  - [ ] Create product idea input and validation
+  - [ ] Implement market research automation for product ideas
+  - [ ] Add target audience definition and analysis
+  - [ ] Create competitive analysis automation
+  - [ ] Setup product concept optimization suggestions
+  - [ ] Implement product creation progress tracking
+  - [ ] Test complete product creation initiation flow
 
-### Week 4: Customer Service Department (First AI Department)
+### Week 4: Content Creation Department (First AI Department)
 
-#### Day 22-24: WhatsApp Integration
-- [ ] **WhatsApp Business API Integration**
-  - [ ] Setup WhatsApp webhook handlers
-  - [ ] Implement message receiving and parsing
-  - [ ] Create message sending functionality
-  - [ ] Add media handling (images, documents, audio)
-  - [ ] Implement conversation threading
-  - [ ] Setup message templates for common responses
-  - [ ] Add delivery and read receipt tracking
-  - [ ] Create WhatsApp number verification flow
-  - [ ] Implement rate limiting for WhatsApp API
-  - [ ] Test end-to-end WhatsApp messaging
+#### Day 22-24: Ebook Generation System
+- [ ] **AI-Powered Ebook Creation**
+  - [ ] Implement ebook content generation with GPT-4
+  - [ ] Create chapter structure and outline automation
+  - [ ] Setup content research and fact-checking workflows
+  - [ ] Add writing style consistency across chapters
+  - [ ] Implement automatic citation and reference generation
+  - [ ] Create ebook formatting and layout automation
+  - [ ] Add cover design generation with DALL-E
+  - [ ] Setup PDF generation and optimization
+  - [ ] Implement content quality scoring and improvement
+  - [ ] Test complete ebook generation workflow
 
 #### Day 25-26: AI-Powered Customer Service
 - [ ] **Customer Service AI Logic**

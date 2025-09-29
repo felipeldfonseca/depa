@@ -1,31 +1,31 @@
-# Customer Service Department Specification
-## AI Departments Platform
+# Creator Success Department Specification
+## Depa - Digital Product Factory Platform
 
-**Version:** 1.0  
-**Date:** 2025-09-13  
-**Owner:** Claude (Tech Lead)  
-**Department Type:** Customer Service (CX)  
-**Status:** MVP READY  
+**Version:** 2.0  
+**Date:** 2025-09-28  
+**Owner:** Felipe PM + Claude AI  
+**Department Type:** Creator Success (CS)  
+**Status:** UPDATED FOR DIGITAL PRODUCT FACTORY MODEL  
 
 ---
 
 ## Department Overview
 
 ### Mission Statement
-Provide 24/7 intelligent customer service that maintains the personal touch of micro-entrepreneurs while scaling their ability to serve customers professionally and efficiently.
+Provide comprehensive support and guidance to digital product creators throughout their journey from product creation to successful marketplace performance, ensuring high creator satisfaction and product success rates.
 
 ### Core Value Proposition
-- **Instant Response**: <3 second response time to customer inquiries
-- **Human-like Quality**: Natural, contextual responses that build relationships
-- **Smart Escalation**: Know when to involve the business owner
-- **Continuous Learning**: Improve responses based on owner feedback
-- **Multi-channel**: WhatsApp, Instagram, Facebook, Email support
+- **Launch Support**: End-to-end guidance for successful product launches
+- **Performance Optimization**: Data-driven recommendations for product improvement
+- **Community Building**: Creator networking and collaboration facilitation
+- **Technical Assistance**: Platform and integration support
+- **Success Coaching**: Personalized guidance for creator growth
 
 ### Success Metrics
-- **Response Time**: 95% of messages answered within 3 seconds
-- **Resolution Rate**: 75% of inquiries resolved without human intervention
-- **Customer Satisfaction**: >4.2/5.0 rating on resolved interactions
-- **Escalation Accuracy**: 90% of escalations deemed appropriate by owners
+- **Creator Retention**: >85% of creators active after 90 days
+- **Product Success Rate**: >20% of launched products generate $100+ in first month
+- **Support Response Time**: <2 hours for creator inquiries
+- **Creator Satisfaction**: >4.5/5.0 rating for support experience
 
 ---
 
@@ -35,19 +35,19 @@ Provide 24/7 intelligent customer service that maintains the personal touch of m
 
 ```mermaid
 graph TD
-    A[Message Received] --> B[Intake Agent]
-    B --> C{Message Classification}
-    C -->|FAQ/Info| D[FAQ Agent]
-    C -->|Order Related| E[Order Agent]
-    C -->|Complaint/Complex| F[Escalation Agent]
-    C -->|Unclear| G[Clarification Agent]
+    A[Creator Request] --> B[Triage Agent]
+    B --> C{Request Classification}
+    C -->|Launch Support| D[Launch Coach Agent]
+    C -->|Technical Issue| E[Technical Support Agent]
+    C -->|Performance Help| F[Optimization Agent]
+    C -->|Community/Collaboration| G[Community Manager Agent]
     
-    D --> H[Response Sent]
+    D --> H[Guidance Provided]
     E --> H
-    F --> I[Human Handoff]
-    G --> J[Follow-up Question]
+    F --> I[Performance Report]
+    G --> J[Connection Facilitated]
     
-    H --> K[Sentiment Agent]
+    H --> K[Follow-up Scheduler]
     I --> K
     J --> B
     

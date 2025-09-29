@@ -1,18 +1,18 @@
-# Agent Department Catalog
-## AI Departments Platform
+# Digital Product Creation Department Catalog
+## Depa - Digital Product Factory Platform
 
-**Version:** 1.0  
-**Last Updated:** 2025-09-13  
+**Version:** 2.0  
+**Last Updated:** 2025-09-28  
 **Owner:** Felipe PM  
-**Status:** DRAFT  
+**Status:** UPDATED FOR DIGITAL PRODUCT FACTORY MODEL  
 
 ---
 
 ## Overview
 
-This document provides a comprehensive catalog of all departments and their specialized AI agents in the AI Departments Platform. Each department contains multiple AI agents that collaborate to perform specific business functions, replacing the need for multiple tools and human specialists.
+This document provides a comprehensive catalog of all departments and their specialized AI agents in the Depa Digital Product Factory. Each department contains multiple AI agents that collaborate to create, launch, and optimize digital products at unprecedented speed.
 
-The platform follows a multi-agent orchestration approach where agents within departments work together, and departments can coordinate with each other to provide comprehensive business solutions.
+The platform follows a multi-agent orchestration approach where agents within departments work together to transform ideas into live marketplace products in 1-3 days, replacing months of manual work with automated creation workflows.
 
 ---
 
@@ -35,405 +35,439 @@ Agent Types:
 
 ---
 
-## Marketing Department
+## Content Creation Department
 
-**Objective**: Generate, distribute, and optimize marketing content across multiple channels
+**Objective**: Generate high-quality digital products through AI-powered content creation workflows
 
-### Marketing Department Agents
+### Content Creation Department Agents
 
-#### 1. Social Media Agent (Core)
-**Primary Function**: Social media content creation and scheduling
+#### 1. Ebook Creation Agent (Core)
+**Primary Function**: Complete ebook creation from concept to publication-ready content
 
 **Capabilities:**
-- Generate platform-specific content (Instagram, Facebook, TikTok, LinkedIn)
-- Create image descriptions for AI image generation
-- Schedule posts with optimal timing algorithms
-- Hashtag optimization and trend analysis
-- Cross-platform content adaptation
+- Topic research and content outline generation
+- Chapter-by-chapter content writing (10,000-50,000 words)
+- Professional formatting and structure optimization
+- Cover design prompts and specifications
+- ISBN and metadata generation for marketplaces
 
 **Inputs:**
-- Brand guidelines and voice parameters
-- Product/service information
-- Industry calendar and trends
-- User engagement history
+- Product concept and target audience
+- Subject matter expertise level
+- Desired ebook length and format
+- Brand voice and style preferences
+- Target marketplace requirements
 
 **Outputs:**
-- Text content for posts
-- Image generation prompts
-- Publishing schedules
-- Hashtag suggestions
-- Performance predictions
+- Complete ebook manuscript (PDF, EPUB formats)
+- Professional cover design specifications
+- Marketing copy and product descriptions
+- Chapter summaries and key takeaways
+- Marketplace metadata and categories
 
 **Tools & Integrations:**
-- Instagram Basic Display API
-- Facebook Graph API
-- TikTok Business API
-- LinkedIn API
-- Image generation services (DALL-E, Midjourney)
+- AI writing models (GPT-4, Claude-3)
+- Document formatting services
+- Cover design generation tools
+- Publishing platform APIs
+- Plagiarism detection systems
 
 **Configuration Parameters:**
 ```json
 {
-  "posting_frequency": "1-5 posts/week",
-  "content_types": ["product", "educational", "behind_scenes", "user_generated"],
-  "tone": ["professional", "casual", "humorous", "inspirational"],
-  "visual_style": "brand_consistent | trendy | minimal | bold",
-  "hashtag_strategy": "trending | niche | branded | mixed"
+  "content_length": "10000-50000 words",
+  "reading_level": "beginner | intermediate | advanced | expert",
+  "format_style": "practical | academic | conversational | instructional",
+  "visual_elements": "minimal | moderate | heavy",
+  "update_frequency": "static | quarterly | annually"
 }
 ```
 
-#### 2. Blog/SEO Agent (Core)
-**Primary Function**: Content marketing and search engine optimization
+#### 2. Course Creation Agent (Core)
+**Primary Function**: Complete online course development with lessons, materials, and assessments
 
 **Capabilities:**
-- Blog post topic research and planning
-- SEO-optimized long-form content creation
-- Keyword research and optimization
-- Meta descriptions and titles
-- Internal linking strategies
-- Content calendar management
+- Curriculum structure and learning path design
+- Video script writing and lesson planning
+- Interactive quiz and assessment creation
+- Supplementary material development
+- Course landing page optimization
 
 **Inputs:**
-- Industry keywords and trends
-- Competitor content analysis
-- Brand expertise areas
-- Target audience interests
-- SEO performance data
+- Learning objectives and target outcomes
+- Student skill level and prerequisites
+- Preferred course duration and format
+- Assessment and certification requirements
+- Platform-specific technical constraints
 
 **Outputs:**
-- Blog post content (800-2000 words)
-- SEO metadata
-- Content briefs and outlines
-- Keyword optimization reports
-- Content calendar recommendations
+- Complete course curriculum (modules, lessons, timings)
+- Video scripts and presentation outlines
+- Interactive quizzes and assessments
+- Downloadable resources and worksheets
+- Course marketing materials and sales pages
 
 **Tools & Integrations:**
-- Google Search Console API
-- SEMrush API (optional)
-- WordPress API
-- Content management systems
+- Learning management system APIs
+- Video script optimization tools
+- Assessment generation platforms
+- File storage and delivery systems
+- Student analytics platforms
 
 **KPIs:**
-- Organic traffic growth: +20% monthly
-- Keyword ranking improvements
-- Content engagement metrics
-- Time spent on page
+- Course completion rates: >60%
+- Student satisfaction scores: >4.5/5
+- Assessment pass rates: >80%
+- Course engagement metrics
 
-#### 3. Ads/Performance Agent (Support)
-**Primary Function**: Paid advertising campaign creation and optimization
+#### 3. Template Library Agent (Core)
+**Primary Function**: Digital template and resource creation for various industries
 
 **Capabilities:**
-- Ad copy generation and A/B testing
-- Audience targeting suggestions
-- Campaign budget optimization
-- Creative asset recommendations
-- Performance analysis and reporting
+- Professional template design and creation
+- Industry-specific customization and branding
+- Bundle packaging and organization
+- Usage instruction and tutorial creation
+- Template marketplace optimization
 
 **Inputs:**
-- Marketing objectives and budget
-- Target audience demographics
+- Template category and use case
+- Target industry and profession
+- Design style preferences
+- Software compatibility requirements
+- Licensing and usage terms
+
+**Outputs:**
+- Professional template files (multiple formats)
+- Customization guides and tutorials
+- Bundle descriptions and organization
+- Usage examples and case studies
+- Marketplace listings and tags
+
+**Tools & Integrations:**
+- Design software APIs (Canva, Figma)
+- File format conversion tools
+- Template marketplace platforms
+- Version control systems
+- Usage analytics tracking
+
+**Configuration Parameters:**
+```json
+{
+  "template_types": ["presentation", "document", "spreadsheet", "design"],
+  "industry_focus": ["business", "education", "creative", "healthcare"],
+  "complexity_level": "basic | intermediate | advanced | professional",
+  "customization_level": "minimal | moderate | extensive",
+  "file_formats": ["PDF", "DOCX", "PPTX", "PNG", "SVG"]
+}
+```
+
+#### 4. Community Content Agent (Support)
+**Primary Function**: Discussion content and community engagement material creation
+
+**Capabilities:**
+- Discussion topic and thread starter creation
+- Community challenge and event planning
+- Member onboarding content development
+- Exclusive content and bonus material creation
+- Community moderation guidelines and responses
+
+**Inputs:**
+- Community purpose and target audience
+- Engagement goals and participation metrics
+- Content calendar and event schedule
+- Member feedback and interaction patterns
+- Community platform requirements
+
+**Outputs:**
+- Daily discussion prompts and questions
+- Weekly challenges and activities
+- Member onboarding sequences
+- Exclusive content and resources
+- Moderation scripts and responses
+
+**Tools & Integrations:**
+- Community platform APIs (Discord, Circle)
+- Content scheduling systems
+- Member analytics platforms
+- Engagement tracking tools
+- Automated moderation systems
+
+**KPIs:**
+- Daily active member rate: >30%
+- Post engagement rate: >15%
+- Member retention rate: >70%
+- Community growth rate: >20% monthly
+
+#### 5. Research & Validation Agent (Support)
+**Primary Function**: Market research and content validation for product optimization
+
+**Capabilities:**
+- Target audience research and analysis
+- Competitor content analysis and gap identification
+- Trend analysis and opportunity spotting
+- Content performance prediction and optimization
+- Market demand validation and sizing
+
+**Inputs:**
+- Product concept and target market
+- Competitor landscape and benchmarks
 - Historical performance data
-- Product/service catalog
-- Competition analysis
+- Industry trends and forecasts
+- Customer feedback and reviews
 
 **Outputs:**
-- Ad copy variations
-- Targeting parameters
-- Budget allocation recommendations
-- Creative briefs
-- Performance dashboards
+- Market research reports and insights
+- Competitor analysis summaries
+- Content optimization recommendations
+- Demand validation scores
+- Performance prediction models
 
 **Tools & Integrations:**
-- Facebook Ads API
-- Google Ads API
-- Instagram Ads API
-- TikTok Ads Manager API
-
-**Configuration Parameters:**
-```json
-{
-  "campaign_types": ["awareness", "traffic", "conversions", "engagement"],
-  "budget_range": {"min": 100, "max": 10000, "currency": "BRL"},
-  "audience_size": "narrow | broad | lookalike | custom",
-  "optimization_goal": "clicks | impressions | conversions | engagement"
-}
-```
-
-#### 4. Email/SMS Agent (Support)
-**Primary Function**: Email marketing and SMS campaign management
-
-**Capabilities:**
-- Email template creation and customization
-- Automated email sequence development
-- SMS campaign creation
-- List segmentation and personalization
-- Deliverability optimization
-
-**Inputs:**
-- Customer contact lists
-- Purchase history and behavior
-- Email performance metrics
-- Brand messaging guidelines
-- Campaign objectives
-
-**Outputs:**
-- Email campaigns and sequences
-- SMS message templates
-- Segmentation strategies
-- Personalization rules
-- Performance analytics
-
-**Tools & Integrations:**
-- SendGrid API
-- Mailchimp API
-- Twilio SMS API
-- HubSpot API (optional)
-
-**KPIs:**
-- Email open rates: >25%
-- Click-through rates: >3%
-- SMS response rates: >10%
-- List growth rate: >5% monthly
-
-#### 5. Brand/Copy Agent (Support)
-**Primary Function**: Brand consistency and copywriting across all channels
-
-**Capabilities:**
-- Brand voice and tone consistency checking
-- Copy editing and optimization
-- Brand guideline enforcement
-- Message variation generation
-- Content style standardization
-
-**Inputs:**
-- Brand guidelines and voice parameters
-- Existing content library
-- Target audience personas
-- Brand positioning statements
-- Industry communication standards
-
-**Outputs:**
-- Brand-consistent copy
-- Style guide recommendations
-- Content quality scores
-- Voice and tone guidelines
-- Copy performance metrics
+- Market research APIs
+- Social media monitoring tools
+- Competitor analysis platforms
+- Trend detection services
+- Survey and feedback systems
 
 ---
 
-## Customer Service Department
+## Marketing & Launch Department
 
-**Objective**: Automate customer interactions, provide instant support, and ensure high satisfaction levels
+**Objective**: Create and execute comprehensive product launch strategies with automated marketing campaigns
 
-### Customer Service Department Agents
+### Marketing & Launch Department Agents
 
-#### 1. WhatsApp Responder Agent (Core)
-**Primary Function**: Automated WhatsApp customer support
+#### 1. Landing Page Creator Agent (Core)
+**Primary Function**: High-converting product landing pages and sales copy
 
 **Capabilities:**
-- Natural language understanding for customer inquiries
-- Context-aware response generation
-- Multi-turn conversation management
-- Language detection and response
-- Escalation trigger detection
+- Persuasive sales copy generation and optimization
+- Landing page structure and flow design
+- A/B testing variations and recommendations
+- Mobile-responsive design specifications
+- Conversion rate optimization suggestions
 
 **Inputs:**
-- Customer messages and conversation history
-- Product/service knowledge base
-- FAQ database
-- Business hours and availability
-- Escalation rules and triggers
+- Product specifications and benefits
+- Target audience demographics and psychology
+- Competitive analysis and market positioning
+- Brand voice and messaging guidelines
+- Conversion goals and success metrics
 
 **Outputs:**
-- Customer responses
-- Conversation summaries
-- Escalation alerts
-- Interaction analytics
-- Customer satisfaction scores
+- Complete landing page copy and structure
+- Headline and subheading variations
+- Call-to-action optimization suggestions
+- Visual element specifications
+- A/B testing recommendations
 
 **Tools & Integrations:**
-- WhatsApp Business Cloud API
-- WhatsApp Business Platform
-- Twilio WhatsApp API
-- Webhook management system
+- Landing page builders (Whop, Gumroad)
+- Conversion tracking systems
+- A/B testing platforms
+- Analytics and heatmap tools
+- Email capture integrations
 
 **Configuration Parameters:**
 ```json
 {
-  "response_time_sla": "< 2 minutes",
-  "business_hours": "09:00-18:00 BRT",
-  "escalation_triggers": ["complaint", "refund", "complex_query", "dissatisfaction"],
-  "languages": ["pt-BR", "en-US"],
-  "conversation_memory": "7 days"
+  "copy_style": "direct | story-driven | benefit-focused | urgency-based",
+  "page_length": "short | medium | long-form",
+  "social_proof_type": "testimonials | reviews | social_stats | expert_endorsements",
+  "urgency_level": "none | subtle | moderate | high",
+  "pricing_strategy": "single | tiered | dynamic | freemium"
 }
 ```
 
-#### 2. FAQ Builder Agent (Core)
-**Primary Function**: Dynamic FAQ creation and management
+#### 2. Launch Campaign Agent (Core)
+**Primary Function**: Coordinated multi-channel product launch campaigns
 
 **Capabilities:**
-- FAQ content generation from common queries
-- Knowledge base organization and updates
-- Question categorization and tagging
-- Answer quality optimization
-- FAQ performance analytics
+- Launch timeline and campaign strategy development
+- Social media campaign creation and scheduling
+- Email sequence development and automation
+- Influencer outreach and partnership coordination
+- Launch event planning and execution
 
 **Inputs:**
-- Customer inquiry patterns
-- Product/service documentation
-- Previous support conversations
-- Business policy information
-- Industry best practices
+- Product launch date and timeline
+- Available marketing channels and budgets
+- Target audience segments and preferences
+- Competitive landscape and market timing
+- Content assets and promotional materials
 
 **Outputs:**
-- FAQ articles and responses
-- Knowledge base updates
-- Question categorization
-- Answer effectiveness scores
-- Content gap analysis
+- Complete launch campaign timeline
+- Multi-channel content calendar
+- Email sequences and social media posts
+- Influencer outreach templates
+- Performance tracking dashboards
 
 **Tools & Integrations:**
-- Internal knowledge base
-- Document processing APIs
-- Search and indexing systems
-- Content management platforms
+- Social media management platforms
+- Email marketing automation systems
+- Influencer outreach tools
+- Campaign tracking analytics
+- Cross-platform publishing APIs
 
 **KPIs:**
-- FAQ coverage rate: >80% of inquiries
-- Answer accuracy: >90%
-- Customer self-service rate: >60%
-- FAQ utilization metrics
+- Launch week traffic: 5,000+ visitors
+- Email open rates: >35% for launch sequences
+- Social media engagement: >10% engagement rate
+- Conversion rate: >3% for launch traffic
 
-#### 3. Classification Agent (Core)
-**Primary Function**: Customer inquiry classification and routing
+#### 3. SEO & Discovery Agent (Core)
+**Primary Function**: Search engine optimization and product discoverability
 
 **Capabilities:**
-- Intent classification and sentiment analysis
-- Priority level assignment
-- Department routing decisions
-- Urgency assessment
-- Customer type identification
+- Keyword research and content optimization
+- Marketplace SEO for product listings
+- Blog content creation for product promotion
+- Backlink strategy development and execution
+- Search ranking monitoring and optimization
 
 **Inputs:**
-- Customer messages and metadata
-- Historical classification data
-- Business rules and priorities
-- Customer profile information
-- Conversation context
+- Product keywords and search terms
+- Target marketplace platforms and algorithms
+- Competitor SEO analysis and benchmarks
+- Content topics and educational angles
+- Link building opportunities and partnerships
 
 **Outputs:**
-- Message classifications
-- Priority assignments
-- Routing recommendations
-- Sentiment scores
-- Escalation flags
+- SEO-optimized product descriptions
+- Keyword-rich blog content and articles
+- Marketplace listing optimizations
+- Link building outreach templates
+- SEO performance tracking reports
+
+**Tools & Integrations:**
+- SEO research tools (SEMrush, Ahrefs)
+- Marketplace API integrations
+- Content management systems
+- Link tracking and monitoring tools
+- Search console integrations
 
 **Configuration Parameters:**
 ```json
 {
-  "classification_categories": [
-    "product_inquiry", "complaint", "compliment", "order_status",
-    "refund_request", "technical_support", "general_info"
-  ],
-  "priority_levels": ["low", "medium", "high", "urgent"],
-  "sentiment_thresholds": {"negative": -0.3, "positive": 0.3},
-  "confidence_threshold": 0.75
+  "keyword_difficulty": "low | medium | high | mixed",
+  "content_frequency": "daily | weekly | bi-weekly | monthly",
+  "marketplace_focus": ["whop", "gumroad", "teachable", "etsy"],
+  "content_types": ["blog", "video", "infographic", "podcast"],
+  "link_building_strategy": "organic | outreach | partnerships | content_marketing"
 }
 ```
 
-#### 4. Escalation Manager Agent (Support)
-**Primary Function**: Human escalation coordination and handoff management
+#### 4. Social Proof Agent (Support)
+**Primary Function**: Customer testimonials and social proof generation
 
 **Capabilities:**
-- Escalation criteria assessment
-- Human agent availability checking
-- Context preparation for handoffs
-- Escalation tracking and follow-up
-- Resolution quality monitoring
+- Customer feedback collection and curation
+- Testimonial and review generation assistance
+- Case study development and presentation
+- Social media proof compilation
+- Trust signal optimization and display
 
 **Inputs:**
-- Conversation history and context
-- Escalation triggers and rules
-- Human agent availability
-- Customer priority levels
-- Resolution timeframes
+- Customer purchase and usage data
+- Feedback forms and survey responses
+- Social media mentions and reviews
+- Success stories and outcome metrics
+- Brand reputation monitoring data
 
 **Outputs:**
-- Escalation notifications
-- Context summaries for humans
-- Handoff protocols
-- Follow-up schedules
-- Resolution tracking
+- Curated testimonial collections
+- Case study narratives and presentations
+- Social proof widgets and displays
+- Review response templates
+- Trust signal recommendations
 
 **Tools & Integrations:**
-- Internal ticketing systems
-- Human agent management platforms
-- Notification systems
-- CRM integrations
+- Review collection platforms
+- Survey and feedback tools
+- Social media monitoring systems
+- Testimonial management platforms
+- Trust badge and certification services
 
 **KPIs:**
-- Escalation rate: <20% of conversations
-- Handoff success rate: >95%
-- Human resolution time: <4 hours
-- Customer satisfaction post-escalation: >4.0/5.0
+- Review collection rate: >20% of customers
+- Average review rating: >4.5/5 stars
+- Testimonial conversion impact: >15% uplift
+- Social proof engagement rate: >8%
 
-#### 5. SLA Bot Agent (Monitoring)
-**Primary Function**: Service level agreement monitoring and enforcement
+#### 5. Performance Analytics Agent (Monitoring)
+**Primary Function**: Marketing campaign performance tracking and optimization
 
 **Capabilities:**
-- Response time monitoring
-- SLA compliance tracking
-- Performance alerts and notifications
-- Quality assurance metrics
-- Customer satisfaction measurement
+- Multi-channel campaign performance monitoring
+- ROI calculation and attribution modeling
+- Customer acquisition cost tracking
+- Conversion funnel analysis and optimization
+- Predictive performance modeling
 
 **Inputs:**
-- Conversation timestamps and metrics
-- SLA definitions and thresholds
-- Customer feedback and ratings
-- Agent performance data
-- Business rules and standards
+- Campaign tracking data from all channels
+- Sales and conversion metrics
+- Customer lifetime value calculations
+- Marketing spend and budget allocations
+- Competitor benchmarking data
 
 **Outputs:**
-- SLA compliance reports
-- Performance alerts
-- Quality scorecards
-- Improvement recommendations
-- Customer satisfaction metrics
+- Performance dashboards and reports
+- ROI analysis and recommendations
+- Optimization suggestions and tests
+- Budget allocation recommendations
+- Predictive performance forecasts
+
+**Tools & Integrations:**
+- Analytics platforms (Google Analytics, Mixpanel)
+- Attribution modeling tools
+- Customer data platforms
+- Marketing automation systems
+- Business intelligence dashboards
 
 **KPIs:**
-- First response time: <2 minutes
-- Resolution time: <1 hour for standard inquiries
-- Customer satisfaction: >4.2/5.0
-- SLA compliance: >95%
+- Marketing ROI: >300% for digital campaigns
+- Customer acquisition cost: <$50 per customer
+- Attribution accuracy: >85% across channels
+- Campaign optimization improvement: >20% quarterly
 
 ---
 
 ## Future Departments (Post-MVP)
 
 ### Design Department (Phase 2)
-**Agents**: Creative Generator, Asset Manager, Brand Consistency, A/B Test Designer
+**Objective**: Professional visual design for digital products and marketing materials
+**Agents**: Cover Designer, Brand Generator, Visual Asset Creator, Layout Optimizer, Print Formatter
 
-### Sales/CRM Department (Phase 2)  
-**Agents**: Lead Scorer, Pipeline Manager, Follow-up Automator, Proposal Generator
+### Analytics & Optimization Department (Phase 2)  
+**Objective**: Product performance tracking and data-driven optimization
+**Agents**: Performance Tracker, A/B Test Manager, Customer Behavior Analyst, Revenue Optimizer, Conversion Predictor
 
-### Data/BI Department (Phase 2)
-**Agents**: Data Collector, Analytics Reporter, Insight Generator, Dashboard Builder
+### Customer Success Department (Phase 2)
+**Objective**: Creator support and product launch success management
+**Agents**: Creator Success Manager, Launch Support Bot, Technical Support Agent, Community Moderator, Feedback Collector
 
-### Finance Department (Phase 3)
-**Agents**: Invoice Generator, Expense Tracker, Cash Flow Predictor, Tax Assistant
+### Advanced Content Department (Phase 3)
+**Objective**: Specialized content formats and advanced product types
+**Agents**: Video Script Writer, Podcast Content Creator, Interactive Content Builder, VR/AR Asset Generator, Multimedia Assembler
 
-### Growth/Ads Department (Phase 3)
-**Agents**: Campaign Optimizer, Audience Builder, Creative Tester, Attribution Tracker
+### Marketplace Expansion Department (Phase 3)
+**Objective**: Multi-platform publishing and marketplace optimization
+**Agents**: Platform Integrator, Listing Optimizer, Cross-Platform Syncer, Marketplace SEO Specialist, Competition Monitor
 
-### Dev/Automation Department (Phase 3)
-**Agents**: Integration Builder, Workflow Automator, API Manager, Data Sync
+### Legal & Compliance Department (Phase 3)
+**Objective**: Content protection, licensing, and marketplace compliance
+**Agents**: Copyright Checker, License Generator, DMCA Monitor, Terms Creator, Compliance Auditor
 
-### Legal/Compliance Department (Phase 4)
-**Agents**: Document Generator, Compliance Checker, Risk Assessor, Policy Updater
+### Creator Tools Department (Phase 4)
+**Objective**: Advanced creator productivity and workflow automation
+**Agents**: Workflow Builder, Automation Designer, Custom Template Creator, API Integration Manager, White-Label Generator
 
-### HR/Talent Department (Phase 4)
-**Agents**: Job Description Writer, Candidate Screener, Onboarding Guide, Performance Tracker
+### AI Training Department (Phase 4)
+**Objective**: Custom AI model training for specialized product creation
+**Agents**: Model Trainer, Content Specialist, Quality Evaluator, Performance Optimizer, Custom Agent Builder
 
 ---
 
@@ -548,26 +582,26 @@ Monitoring Agents | 1 minute | 95.0%
 
 ## Implementation Roadmap
 
-### Phase 1 (MVP): Core Departments
-- Marketing: Social Media + Blog/SEO Agents
-- Customer Service: WhatsApp Responder + FAQ Builder + Classification
+### Phase 1 (MVP): Core Product Creation
+- Content Creation: Ebook Creator + Course Creator + Template Library Agents
+- Marketing & Launch: Landing Page Creator + Launch Campaign + SEO Agents
 
-### Phase 2: Department Completion
-- Complete Marketing Department (Ads + Email + Brand agents)
-- Complete Customer Service (Escalation + SLA agents)
-- Add Design Department basics
+### Phase 2: Department Completion & Enhancement
+- Complete Content Creation Department (Community Content + Research agents)
+- Complete Marketing & Launch (Social Proof + Performance Analytics agents)
+- Add Design Department basics (Cover Designer + Visual Assets)
 
-### Phase 3: Advanced Features
-- Multi-department orchestration
-- Advanced analytics and insights
-- Custom agent creation tools
-- Enterprise security features
+### Phase 3: Advanced Features & Expansion
+- Multi-department orchestration for complex products
+- Analytics & Optimization Department
+- Customer Success Department
+- Marketplace expansion beyond Whop
 
-### Phase 4: Platform Maturity
-- Agent marketplace
-- Third-party agent integrations
-- Advanced AI capabilities
-- Global expansion features
+### Phase 4: Platform Maturity & Specialization
+- Advanced Content Department (video, interactive)
+- Legal & Compliance Department
+- Creator Tools Department
+- AI Training Department for custom models
 
 ---
 
@@ -593,4 +627,4 @@ Monitoring Agents | 1 minute | 95.0%
 
 ---
 
-**Document Status**: Complete - Ready for orchestrator specification and implementation planning.
+**Document Status**: UPDATED FOR DIGITAL PRODUCT FACTORY - Complete transformation from business automation to product creation departments. Ready for orchestrator specification and implementation planning.

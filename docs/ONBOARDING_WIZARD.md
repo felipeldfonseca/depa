@@ -1,126 +1,149 @@
-# Onboarding Wizard - "Company in Minutes"
+# Creator Onboarding Wizard - "Product in Hours"
+## Depa - Digital Product Factory Platform
+
+**Version:** 2.0  
+**Date:** 2025-09-28  
+**Owner:** Felipe PM + Claude AI  
+**Status:** UPDATED FOR DIGITAL PRODUCT FACTORY MODEL  
+
+---
 
 ## Overview
 
-The onboarding wizard is designed to get micro-entrepreneurs from signup to their first business output in under 5 minutes. The wizard follows a "company in a box" approach, requiring minimal input while maximizing value generation through intelligent defaults and AI-powered automation.
+The creator onboarding wizard is designed to get digital product creators from signup to their first product creation in under 30 minutes. The wizard follows a "product in hours" approach, requiring minimal input while maximizing value generation through AI-powered product creation and instant marketplace publishing.
 
 ## Core Principles
 
-- **Minimal friction**: Maximum 5 questions to get started
-- **Smart defaults**: AI infers missing information based on business segment
-- **Immediate value**: Generate content preview before any integrations
-- **Progressive disclosure**: Start simple, add complexity later
+- **Minimal friction**: Maximum 4 questions to start creating
+- **Smart defaults**: AI infers product details based on creator expertise
+- **Immediate value**: Generate product preview before any marketplace setup
+- **Progressive disclosure**: Start with product creation, add marketing later
 
 ## Wizard Flow
 
-### Step 1: Business Identity (60 seconds)
-**Question 1: What type of business are you starting?**
-- Dropdown with popular segments:
-  - Food & Restaurants
-  - Fashion & Clothing
-  - Digital Services/Consulting
-  - Beauty & Wellness
-  - Local Services
-  - E-commerce/Products
-  - Content Creation
-  - Professional Services
+### Step 1: Creator Identity (60 seconds)
+**Question 1: What type of digital products do you want to create?**
+- Multi-select with popular categories:
+  - Ebooks & Guides
+  - Online Courses
+  - Templates & Resources
+  - Communities & Memberships
+  - Software Tools
+  - Design Assets
   - Custom (text input)
 
-**Question 2: What's your business name?**
-- Text input with real-time availability check
-- AI suggestions if name is taken
-- Option to "decide later" with temporary name
+**Question 2: What's your area of expertise?**
+- Text input with AI autocomplete suggestions
+- Popular topics: Marketing, Design, Programming, Business, Health, Finance
+- AI will use this to generate relevant product ideas
 
-### Step 2: Brand Foundation (90 seconds)
-**Logo & Colors Import:**
-- Upload logo (auto-extract brand colors)
-- OR select from AI-generated logo suggestions based on business type
-- OR skip and use initials-based logo
-- Color palette auto-generation if no logo provided
-
-**Question 3: What's your brand tone?**
+### Step 2: Product Focus (90 seconds)
+**Question 3: What's your current skill level as a creator?**
 - Simple selector:
-  - Professional & Trustworthy
-  - Friendly & Approachable
-  - Bold & Creative
-  - Minimal & Modern
-- AI will adapt all copy and content to this tone
+  - Beginner (first digital product)
+  - Intermediate (1-5 products created)
+  - Advanced (5+ products, looking to scale)
+  - Expert (established creator, want faster workflow)
+- This determines template complexity and guidance level
 
-### Step 3: Channels & Presence (90 seconds)
-**Question 4: Where do you want to reach customers?**
-- Multi-select checkboxes:
-  - Instagram
-  - Facebook
-  - WhatsApp Business
-  - Website/Blog
-  - Email
-  - TikTok
-  - LinkedIn
-- Based on selection, wizard prioritizes department setup
-
-**Question 5: What's your main goal for the next 30 days?**
+**Question 4: What's your main goal for the next 30 days?**
 - Single select:
-  - Get my first customers
-  - Build brand awareness
-  - Launch a product
-  - Improve customer service
-  - Test business ideas
-- This drives initial content calendar and department focus
+  - Launch my first digital product
+  - Create multiple products quickly
+  - Build an audience before launching
+  - Scale existing product portfolio
+  - Test product ideas and validate demand
+- This drives initial product recommendations and marketing focus
 
-### Step 4: AI Generation & Preview (2 minutes)
-**Instant Content Generation:**
-Based on the 5 answers, AI generates:
-- 7-day content calendar with posts
-- Welcome message templates for WhatsApp
-- Basic "About Us" copy
-- 3 social media post designs
-- Email welcome sequence
+### Step 3: Brand & Voice Setup (90 seconds)
+**Creator Brand Foundation:**
+- Upload profile image or avatar (auto-extract brand colors)
+- OR select from AI-generated creator avatars
+- OR skip and use initials-based avatar
 
-**Preview Interface:**
-- Split screen showing generated content
-- Toggle between different outputs
-- Edit suggestions in real-time
-- "Generate more options" button for variations
+**Creator Voice Selection:**
+- Choose your creator personality:
+  - Expert & Authoritative
+  - Friendly & Approachable  
+  - Creative & Inspiring
+  - Practical & No-nonsense
+- AI will adapt all product copy and marketing to this voice
 
-### Step 5: Activation Choice (30 seconds)
-**Choose Your Starting Point:**
-- **Start with Marketing** (default for brand awareness goal)
-  - Activates Marketing Department
-  - Schedules first week of posts
-  - Sets up content calendar
-- **Start with Customer Service** (default for customer-focused goals)
-  - Activates Customer Experience Department
-  - Sets up WhatsApp auto-responder
-  - Creates FAQ knowledge base
-- **Start with Both** (premium option)
-  - Full activation of both departments
-  - Integrated workflow setup
+### Step 4: AI Product Generation & Preview (3 minutes)
+**Instant Product Ideas:**
+Based on the 4 answers, AI generates:
+- 5 specific product concepts with titles and descriptions
+- Target audience analysis for each product
+- Pricing recommendations based on market research
+- Content outline for the most promising product
+- Marketing hook suggestions
+
+**Product Preview Interface:**
+- Interactive product cards showing each concept
+- Detailed breakdown: title, description, target audience, price
+- "Create This Product" button for instant generation
+- "Generate More Ideas" for additional concepts
+- Edit and customize any generated elements
+
+### Step 5: First Product Creation (5-10 minutes)
+**Choose Your First Product:**
+- Select from generated ideas or create custom concept
+- AI creates detailed product outline and structure
+- Content generation begins automatically
+- Real-time progress indicator
+
+**Product Types Quick Creation:**
+- **Ebook**: Generate table of contents, chapter outlines, and sample content
+- **Course**: Create curriculum structure, lesson plans, and module breakdown  
+- **Template**: Design framework, customization options, and usage guides
+- **Community**: Discussion topics, member onboarding, and engagement plan
+
+### Step 6: Marketplace Publishing Setup (2 minutes)
+**Publishing Destination:**
+- **Start with Whop** (recommended - instant setup)
+  - One-click marketplace publishing
+  - Automated product listing optimization
+  - Instant analytics and tracking
+- **Add More Later** (Gumroad, Teachable, etc.)
+  - Focus on Whop for first product
+  - Additional marketplaces available post-launch
+
+**Launch Strategy:**
+- **Quick Launch** (publish immediately after creation)
+- **Planned Launch** (schedule launch date and marketing campaign)
+- **Private Preview** (share with select audience for feedback first)
 
 ## Technical Implementation
 
 ### Data Collection Schema
 ```json
 {
-  "onboarding_session": {
+  "creator_onboarding": {
     "session_id": "uuid",
     "user_id": "uuid",
-    "business_segment": "string",
-    "business_name": "string",
+    "product_types": ["ebook", "course", "template"],
+    "expertise_area": "string",
+    "creator_level": "beginner|intermediate|advanced|expert", 
+    "primary_goal": "first_launch|scale_fast|build_audience|scale_portfolio|validate_ideas",
     "brand_assets": {
-      "logo_url": "string",
+      "avatar_url": "string",
       "primary_color": "#hex",
-      "secondary_color": "#hex",
-      "color_palette": ["#hex"]
+      "brand_voice": "expert|friendly|creative|practical"
     },
-    "brand_tone": "professional|friendly|bold|minimal",
-    "channels": ["instagram", "whatsapp", "email"],
-    "primary_goal": "customers|awareness|launch|service|test",
-    "generated_content": {
-      "posts": [],
-      "messages": [],
-      "copy": {}
-    },
-    "department_choice": "marketing|cx|both",
+    "generated_products": [
+      {
+        "id": "uuid",
+        "title": "string",
+        "description": "string", 
+        "type": "ebook|course|template|community",
+        "target_audience": "string",
+        "suggested_price": "number",
+        "outline": "object"
+      }
+    ],
+    "selected_product": "uuid",
+    "publishing_choice": "whop|multiple|private",
+    "launch_strategy": "quick|planned|preview",
     "completed_at": "timestamp"
   }
 }
@@ -128,160 +151,153 @@ Based on the 5 answers, AI generates:
 
 ### AI Prompt Templates
 
-**Content Generation Prompt:**
+**Product Idea Generation Prompt:**
 ```
-Generate a 7-day content strategy for a {business_segment} business named {business_name}.
-Brand tone: {brand_tone}
-Primary goal: {primary_goal}
-Channels: {channels}
+Generate 5 specific digital product ideas for a {creator_level} creator with expertise in {expertise_area}.
+Creator goal: {primary_goal}
+Product types interested in: {product_types}
 
 Requirements:
-- Create engaging posts appropriate for each channel
-- Include both educational and promotional content
-- Maintain consistent brand voice
-- Include call-to-actions aligned with the primary goal
-- Consider the target audience for {business_segment}
+- Each product should solve a specific problem for the target audience
+- Include compelling titles that would perform well on marketplaces
+- Suggest realistic pricing based on market research
+- Consider what this creator can realistically create and market
+- Focus on products that can be created quickly but provide real value
 
-Output format: JSON with posts array containing platform, content, timing, and hashtags.
+Output format: JSON with products array containing title, description, type, target_audience, suggested_price, and creation_difficulty.
 ```
 
-**Logo Generation Prompt:**
+**Product Content Generation Prompt:**
 ```
-Design a minimal, modern logo concept for {business_name}, a {business_segment} business.
-Style preferences: {brand_tone}
+Create a detailed content outline for a {product_type} titled "{product_title}" in the {expertise_area} niche.
+Target audience: {target_audience}
+Creator voice: {brand_voice}
+Goal: {primary_goal}
+
 Requirements:
-- Simple and scalable
-- Works in single color
-- Memorable and professional
-- Appropriate for digital use
-Generate 3 variations with different approaches.
+- Structure appropriate for {product_type} format
+- Content that can be created within 1-3 days
+- Clear value proposition and learning outcomes
+- Engaging and actionable content
+- Professional presentation suitable for marketplace selling
+
+Output detailed structure with sections, key points, and content suggestions.
 ```
 
 ### Integration Points
 
-**Logo Processing:**
-- File upload handler (max 5MB, PNG/JPG/SVG)
-- AI color extraction using computer vision
-- Auto-generation of favicon and social media variants
-- Brand guideline creation
+**Product Generation Pipeline:**
+- AI content creation engine (GPT-4, Claude-3)
+- Template system for different product types
+- Marketplace API integration (Whop primary)
+- Brand asset processing and optimization
+- SEO optimization for product listings
 
-**Content Preview System:**
-- Real-time rendering of generated posts
-- Mock social media feed display
-- WhatsApp conversation simulator
-- Email template preview
-
-**Department Activation:**
-- Automatic agent configuration based on selections
-- Template application for chosen business segment
-- Initial workflow setup
-- Integration credential prompts (defer to post-onboarding)
+**Creator Dashboard Setup:**
+- Product creation workspace
+- Progress tracking for active products
+- Analytics dashboard for published products
+- Marketing campaign management
+- Revenue and performance metrics
 
 ## Success Metrics
 
 ### Completion Metrics
-- Wizard completion rate (target: >80%)
-- Time to completion (target: <5 minutes)
-- Drop-off points identification
+- Wizard completion rate (target: >85%)
+- Time to completion (target: <30 minutes)
+- First product creation rate (target: >70%)
 
-### Activation Metrics
-- First content published within 24 hours (target: >60%)
-- Department utilization within first week (target: >70%)
-- User return within 7 days (target: >50%)
+### Creator Activation Metrics  
+- First product published within 72 hours (target: >60%)
+- Product generates first sale within 30 days (target: >20%)
+- Creator returns to create second product (target: >40%)
 
-### Quality Metrics
-- User satisfaction with generated content (target: >4/5)
-- Edit rate of generated content (target: <30%)
-- Template usage vs. custom creation
+### Product Quality Metrics
+- Creator satisfaction with generated products (target: >4.2/5)
+- Edit rate of generated content (target: <40%)
+- Product completion rate (started → published)
 
-## Error Handling & Fallbacks
+## Creator Success Framework
 
-### Technical Failures
-- Auto-save progress at each step
-- Graceful degradation for AI failures
-- Fallback to manual input options
-- Clear error messages with next steps
+### Immediate Value Delivery
+- Product concept validation within minutes
+- Content structure and outline generation
+- Market positioning and pricing guidance
+- Instant publishing capability
 
-### User Experience Failures
-- "Skip for now" option on all non-essential fields
-- Ability to go back and modify previous answers
-- Exit and resume later functionality
-- Help tooltips for complex questions
+### Progressive Product Creation
+- Start with simplest viable product
+- Build complexity over time
+- Learn from first product performance
+- Scale to multiple products and formats
 
-## Mobile Optimization
+### Creator Journey Optimization
+- **Day 1**: Complete onboarding, generate first product concept
+- **Day 2-3**: Create and refine product content
+- **Day 4**: Publish to marketplace with optimized listing
+- **Week 1**: Launch marketing campaign, track performance
+- **Week 2+**: Iterate based on feedback, plan next product
 
-### Responsive Design
-- Single column layout for mobile
-- Large, touch-friendly buttons
-- Optimized image upload flow
-- Swipe gestures for navigation
+## Mobile-First Design
 
-### Performance
-- Progressive loading of content
-- Offline capability for basic flow
-- Compressed image processing
-- Minimal JavaScript bundles
+### Creator Mobile Experience
+- Touch-optimized product creation interface
+- Voice-to-text for content input
+- Mobile-friendly content editing
+- One-tap publishing to marketplaces
 
-## Post-Onboarding Experience
-
-### Immediate Next Steps
-- Dashboard tour highlighting key features
-- First task suggestions based on department choice
-- Calendar view of scheduled content
-- Integration setup prompts (non-blocking)
-
-### Progressive Enhancement
-- Advanced features unlock after basic usage
-- Tutorial system for complex workflows
-- Achievement system for milestones
-- Upgrade prompts at natural moments
+### Performance Optimization
+- Progressive content generation
+- Offline editing capabilities  
+- Cloud sync for cross-device creation
+- Optimized for creator workflow patterns
 
 ## A/B Testing Framework
 
-### Test Variations
-- Question order and wording
-- Number of questions (3 vs 5 vs 7)
-- Preview vs. no preview flow
-- Default selections based on segment
+### Onboarding Variations
+- Number of questions (3 vs 4 vs 5)
+- Question order and phrasing
+- Product preview vs immediate creation
+- Marketplace setup timing
 
-### Success Criteria
-- Completion rate
-- Time to first value
-- Long-term engagement
-- Revenue conversion
+### Success Optimization
+- Time to first product creation
+- Product completion rates
+- Creator retention and engagement
+- Revenue generation within 30 days
 
 ## Implementation Phases
 
-### Phase 1: Core Wizard (MVP)
-- Basic 5-question flow
-- Simple content generation
-- Department activation
-- Mobile-responsive design
+### Phase 1: Core Creator Wizard (MVP)
+- 4-question creator profiling
+- Basic product idea generation  
+- Simple content outline creation
+- Whop marketplace integration
 
-### Phase 2: Enhanced Preview
-- Rich content preview
-- Real-time editing
-- Multiple generation options
-- Brand asset processing
+### Phase 2: Enhanced Product Creation
+- Advanced content generation
+- Multiple product type support
+- Real-time editing and refinement
+- Marketing copy generation
 
-### Phase 3: Intelligence Layer
-- Smart defaults based on similar businesses
-- Predictive channel recommendations
-- Automated A/B testing
-- Advanced personalization
+### Phase 3: Creator Success Optimization
+- Predictive product success scoring
+- Automated A/B testing for creators
+- Advanced personalization engine
+- Multi-marketplace publishing
 
 ## Integration Dependencies
 
 ### Required Services
-- AI content generation API
-- Image processing service
-- Brand color extraction
-- Template rendering engine
+- AI content generation (OpenAI GPT-4, Anthropic Claude)
+- Whop marketplace API
+- Creator brand asset processing
+- Product template rendering system
 
-### Optional Enhancements
-- Industry database for smart defaults
-- Competitive analysis for suggestions
-- Social media preview APIs
-- Domain availability checker
+### Creator Success Tools
+- Analytics and performance tracking
+- Creator community and collaboration
+- Marketing automation and campaigns  
+- Revenue optimization and insights
 
-This onboarding wizard transforms the traditional complex business setup into a streamlined, AI-powered experience that generates immediate value while collecting the minimum viable information needed to create a functional business presence.
+This creator onboarding wizard transforms the traditional complex product creation process into a streamlined, AI-powered experience that enables creators to go from idea to published product in hours instead of months, while maintaining quality and market viability.

@@ -1,48 +1,50 @@
 # System Architecture
-## AI Departments Platform
+## Depa - Digital Product Factory Platform
 
-**Version:** 1.0  
-**Date:** 2025-09-13  
+**Version:** 2.0  
+**Date:** 2025-09-28  
 **Owner:** Claude (Tech Lead)  
-**Review Status:** APPROVED  
+**Review Status:** UPDATED FOR PRODUCT FACTORY MODEL  
 
 ---
 
 ## Architecture Overview
 
 ### System Goals
-- **Multi-tenant SaaS**: Isolated data per organization with shared infrastructure
-- **AI-first**: Every business function powered by intelligent agents
-- **Mobile-optimized**: Primary interface through responsive web app
-- **Scalable**: Handle 10K+ companies with real-time interactions
-- **Observable**: Full telemetry and monitoring for all components
+- **Digital Product Factory**: Rapid creation and deployment of multiple digital products
+- **Marketplace Integration**: Seamless publishing to Whop and other marketplaces
+- **AI-Powered Creation**: Complete product generation through intelligent departments
+- **Multi-Product Management**: Handle thousands of products across hundreds of creators
+- **Speed Optimization**: <3 days from idea to live marketplace product
 
 ### High-Level Architecture (C4 Context)
 
 ```mermaid
 C4Context
-    title AI Departments Platform - System Context
+    title Depa Digital Product Factory - System Context
 
-    Person(entrepreneur, "Micro-Entrepreneur", "Uses platform to run business")
-    Person(customer, "End Customer", "Interacts via WhatsApp/Social")
+    Person(creator, "Digital Product Creator", "Creates and launches multiple products")
+    Person(buyer, "Product Buyer", "Purchases products on marketplaces")
     
-    System(platform, "AI Departments Platform", "Multi-tenant SaaS for business automation")
+    System(depa, "Depa Platform", "AI-powered digital product creation factory")
     
-    System_Ext(whatsapp, "WhatsApp Cloud API", "Customer messaging")
-    System_Ext(social, "Social Media APIs", "Instagram, Facebook, TikTok")
+    System_Ext(whop, "Whop Marketplace", "Product hosting and sales")
+    System_Ext(marketplaces, "Other Marketplaces", "Gumroad, Etsy Digital, etc.")
     System_Ext(ai, "AI Providers", "OpenAI, Anthropic, Google")
-    System_Ext(payments, "Payment Processors", "Stripe, Mercado Pago")
+    System_Ext(payments, "Payment Processors", "Stripe for subscriptions")
     System_Ext(storage, "Cloud Storage", "Google Cloud Storage")
+    System_Ext(cdn, "Content Delivery", "Global asset distribution")
     
-    Rel(entrepreneur, platform, "Manages business")
-    Rel(customer, whatsapp, "Sends messages")
-    Rel(customer, social, "Engages with content")
+    Rel(creator, depa, "Creates products")
+    Rel(buyer, whop, "Purchases products")
+    Rel(buyer, marketplaces, "Discovers products")
     
-    Rel(platform, whatsapp, "Automated responses")
-    Rel(platform, social, "Content publishing")
-    Rel(platform, ai, "Content generation")
-    Rel(platform, payments, "Billing")
-    Rel(platform, storage, "Asset storage")
+    Rel(depa, whop, "Publishes products")
+    Rel(depa, marketplaces, "Multi-marketplace publishing")
+    Rel(depa, ai, "Content generation")
+    Rel(depa, payments, "Subscription billing")
+    Rel(depa, storage, "Product assets")
+    Rel(depa, cdn, "Fast delivery")
 ```
 
 ---
@@ -51,20 +53,22 @@ C4Context
 
 ### Frontend Layer
 
-#### Web Application (Next.js 14)
+#### Product Factory Dashboard (Next.js 14)
 - **Technology**: React 18 + TypeScript + Tailwind CSS
 - **Hosting**: Vercel (primary) / GCP Cloud Run (backup)
 - **Features**: 
-  - Server-side rendering for SEO
-  - Progressive Web App capabilities
-  - Mobile-first responsive design
-  - Real-time updates via WebSockets
+  - Multi-product portfolio management
+  - Real-time product creation progress
+  - Marketplace integration status
+  - Performance analytics dashboard
+  - A/B testing and optimization tools
 
-#### Mobile Web App
-- **Approach**: Responsive web app with native-like experience
-- **PWA Features**: Offline capability, push notifications, install prompts
-- **Performance**: <3 second load times, <1 second navigation
-- **Future**: Native iOS/Android apps in Phase 2
+#### Creator Mobile Experience
+- **Approach**: Mobile-first responsive web app
+- **PWA Features**: Offline product review, push notifications for sales
+- **Performance**: <2 second load times, instant navigation
+- **Key Features**: Product status monitoring, quick content approval
+- **Future**: Native iOS/Android apps for enhanced mobile creation
 
 ### Backend Services
 
@@ -72,76 +76,106 @@ C4Context
 - **Technology**: Python 3.11 + FastAPI + Pydantic
 - **Hosting**: GCP Cloud Run with auto-scaling
 - **Features**:
-  - OpenAPI documentation
-  - JWT authentication
-  - Rate limiting per tenant
+  - Product creation and management APIs
+  - Marketplace integration endpoints
+  - JWT authentication for creators
+  - Rate limiting per subscription tier
   - Request/response validation
-  - CORS handling for web clients
+  - Creator analytics and reporting
 
-#### Department Orchestrator
+#### Product Creation Orchestrator
 - **Technology**: Python + LangGraph + Redis
-- **Purpose**: Coordinates AI agents within departments
+- **Purpose**: Coordinates AI departments for complete product creation
 - **Features**:
-  - Multi-agent workflow execution
-  - State management across agent interactions
-  - Error handling and compensation
-  - Performance monitoring per agent
+  - End-to-end product generation workflows
+  - Content, design, and marketing coordination
+  - Quality assurance and review management
+  - Marketplace publishing automation
+  - Error handling and retry mechanisms
+
+#### Marketplace Integration Service
+- **Technology**: Python + aiohttp + asyncio
+- **Purpose**: Handle all marketplace API integrations
+- **Features**:
+  - Whop API integration for primary publishing
+  - Multi-marketplace publishing support
+  - Product synchronization and updates
+  - Sales and analytics data aggregation
+  - Compliance and content moderation
 
 #### Real-time Services
 - **Technology**: WebSocket server + Redis Pub/Sub
-- **Purpose**: Live updates for dashboards and notifications
+- **Purpose**: Live updates for product creation and performance
 - **Features**:
-  - Department status updates
-  - Content generation progress
-  - Customer message notifications
-  - System health alerts
+  - Product creation progress tracking
+  - Marketplace publishing status
+  - Sales notifications and alerts
+  - Performance metrics streaming
 
 ### Data Layer
 
 #### Primary Database (PostgreSQL 15)
 - **Hosting**: GCP Cloud SQL with high availability
-- **Size**: Start with 4 vCPU, 16GB RAM, scale as needed
+- **Size**: Start with 8 vCPU, 32GB RAM, scale for thousands of products
 - **Features**:
-  - Multi-tenant schema design
+  - Multi-creator schema design with product isolation
+  - Product versioning and history tracking
   - Encrypted at rest and in transit
   - Automated backups with point-in-time recovery
-  - Read replicas for analytics
+  - Read replicas for analytics and reporting
 
 #### Cache Layer (Redis 7)
-- **Hosting**: GCP Memorystore
+- **Hosting**: GCP Memorystore with cluster mode
 - **Use Cases**:
-  - API response caching
-  - Session storage
-  - AI agent state management
-  - Rate limiting counters
-  - Real-time messaging
+  - Product creation session state
+  - Marketplace API response caching
+  - AI generation result caching
+  - Rate limiting per subscription tier
+  - Real-time sales and analytics data
 
 #### Vector Database (pgvector)
-- **Purpose**: AI embeddings for RAG and semantic search
+- **Purpose**: AI embeddings for content intelligence and optimization
 - **Use Cases**:
-  - Company knowledge base
-  - Content similarity matching
-  - Customer inquiry classification
-  - Brand voice consistency
+  - Product content similarity analysis
+  - Market trend detection and opportunities
+  - Content quality scoring
+  - Duplicate product detection
+  - Creator recommendation system
+
+#### Product Asset Storage
+- **Technology**: GCP Cloud Storage with CDN
+- **Purpose**: Store and deliver all product files
+- **Features**:
+  - Multi-format support (PDF, images, videos, templates)
+  - Global CDN for fast delivery
+  - Automated backup and versioning
+  - Secure access controls per marketplace
 
 ### External Integrations
 
 #### AI Services
-- **Primary**: OpenAI GPT-4 for content generation
-- **Secondary**: Anthropic Claude for complex reasoning
-- **Fallback**: Google PaLM for cost optimization
-- **Image Generation**: DALL-E 3 + Stable Diffusion
+- **Content Generation**: OpenAI GPT-4 for ebooks, courses, and copy
+- **Creative Design**: DALL-E 3 + Midjourney for covers and graphics
+- **Content Optimization**: Anthropic Claude for quality review and editing
+- **Market Analysis**: Google Gemini for trend analysis and optimization
+- **Fallback Strategy**: Multi-provider setup for reliability
 
-#### Communication APIs
-- **WhatsApp**: Cloud API for message automation
-- **Social Media**: Instagram Basic Display + Facebook Graph API
-- **Email**: SendGrid for transactional emails
-- **SMS**: Twilio for notifications (Brazil-focused)
+#### Marketplace APIs
+- **Primary**: Whop API for product creation, management, and analytics
+- **Secondary**: Gumroad API for additional distribution
+- **Future**: Etsy Digital, Shopify, and other marketplace integrations
+- **Features**: Automated publishing, sales tracking, customer management
+
+#### Supporting Services
+- **Email**: SendGrid for creator notifications and customer communications
+- **Analytics**: Google Analytics for product performance tracking
+- **Monitoring**: DataDog for system health and performance
+- **Security**: Auth0 for creator authentication and authorization
 
 #### Payment Processing
-- **Brazil**: Mercado Pago (primary), Stripe (secondary)
-- **International**: Stripe (primary), local processors
-- **Features**: Subscription management, webhook handling, tax calculation
+- **Creator Subscriptions**: Stripe for global subscription billing
+- **Product Sales**: Handled by marketplace partners (Whop, Gumroad)
+- **Features**: Tiered subscription management, usage tracking, billing automation
 
 ---
 
@@ -175,89 +209,119 @@ interface AuthMiddleware {
 #### API Endpoints Structure
 ```
 /api/v1/
-├── auth/                 # Authentication & user management
-├── organizations/        # Company/tenant management
-├── departments/          # Department configuration & status
-├── agents/              # Individual agent management
-├── content/             # Generated content & assets
-├── integrations/        # External service connections
-├── analytics/           # Usage metrics & insights
-├── billing/             # Subscription & payment management
-└── webhooks/            # External service callbacks
+├── auth/                 # Creator authentication & user management
+├── creators/             # Creator profile and preferences
+├── products/             # Product creation, management, and versioning
+├── departments/          # AI department coordination and status
+├── marketplaces/         # Marketplace integration and publishing
+├── analytics/            # Product performance and creator insights
+├── assets/               # Product file management and delivery
+├── billing/              # Subscription & payment management
+├── workflows/            # Product creation workflow management
+└── webhooks/             # Marketplace and service callbacks
 ```
 
 ### Department Orchestrator Components
 
-#### Agent Coordination Engine
+#### Product Creation Engine
 ```python
-class DepartmentOrchestrator:
+class ProductOrchestrator:
     def __init__(self):
-        self.agent_registry = AgentRegistry()
+        self.department_registry = DepartmentRegistry()
         self.workflow_engine = LangGraphWorkflow()
         self.state_manager = RedisStateManager()
-        self.monitoring = AgentMonitoring()
+        self.marketplace_integrator = MarketplaceIntegrator()
+        self.quality_assurance = QualityAssurance()
     
-    async def execute_department_workflow(
+    async def create_digital_product(
         self, 
-        department_id: str, 
-        trigger: WorkflowTrigger
-    ) -> WorkflowResult:
-        # Coordinate multiple agents for business function
-        pass
+        creator_id: str, 
+        product_concept: ProductConcept
+    ) -> ProductCreationResult:
+        # Orchestrate departments for complete product creation
+        workflow = await self.build_product_workflow(product_concept)
+        result = await self.workflow_engine.execute(workflow)
+        return await self.quality_assurance.review(result)
 ```
 
-#### Agent Types by Department
+#### AI Departments for Product Creation
 
-**Marketing Department Agents:**
-- `SocialMediaAgent`: Content creation and scheduling
-- `SEOAgent`: Blog content and keyword optimization  
-- `EmailAgent`: Newsletter and automation sequences
-- `BrandAgent`: Voice and visual consistency
+**Content Creation Department:**
+- `EbookAuthorAgent`: Research, writing, and formatting complete ebooks
+- `CourseCreatorAgent`: Structured lesson creation with assignments
+- `TemplateDesignerAgent`: Business templates and worksheets
+- `CommunityManagerAgent`: Discussion prompts and engagement content
 
-**Customer Service Department Agents:**
-- `WhatsAppAgent`: Message classification and responses
-- `FAQAgent`: Knowledge base management
-- `EscalationAgent`: Human handoff decisions
-- `SentimentAgent`: Customer satisfaction monitoring
+**Marketing & Launch Department:**
+- `CopywriterAgent`: Sales pages, product descriptions, marketing copy
+- `SEOAgent`: Keyword optimization and search visibility
+- `CampaignManagerAgent`: Launch sequences and promotional materials
+- `AnalyticsAgent`: Performance tracking and optimization suggestions
+
+**Design Department:**
+- `CoverDesignerAgent`: Product covers and thumbnails
+- `BrandingAgent`: Visual consistency and style guidelines
+- `UXAgent`: User experience optimization for digital products
+- `AssetCreatorAgent`: Supporting graphics and visual elements
 
 ### Data Access Layer
 
 #### Repository Pattern Implementation
 ```python
-class TenantRepository:
-    def __init__(self, db: Database, tenant_id: str):
+class CreatorRepository:
+    def __init__(self, db: Database, creator_id: str):
         self.db = db
-        self.tenant_id = tenant_id
+        self.creator_id = creator_id
     
-    async def find_by_id(self, entity_id: str) -> Optional[Entity]:
-        # Automatic tenant filtering on all queries
-        return await self.db.query(
-            "SELECT * FROM entities WHERE id = $1 AND organization_id = $2",
-            entity_id, self.tenant_id
-        )
+    async def find_products(self, status: str = None) -> List[Product]:
+        # Automatic creator filtering on all queries
+        query = "SELECT * FROM products WHERE creator_id = $1"
+        params = [self.creator_id]
+        
+        if status:
+            query += " AND status = $2"
+            params.append(status)
+            
+        return await self.db.query(query, *params)
 ```
 
 #### Database Schema Design
 ```sql
--- Multi-tenant base schema
-CREATE SCHEMA IF NOT EXISTS platform;
+-- Product factory schema
+CREATE SCHEMA IF NOT EXISTS depa;
 
--- Core tenant management
-CREATE TABLE platform.organizations (
+-- Core creator management
+CREATE TABLE depa.creators (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email VARCHAR(255) UNIQUE NOT NULL,
     name VARCHAR(255) NOT NULL,
-    slug VARCHAR(100) UNIQUE NOT NULL,
+    subscription_tier VARCHAR(50) DEFAULT 'creator',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- All business entities include organization_id
-CREATE TABLE platform.departments (
+-- Digital products
+CREATE TABLE depa.products (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    organization_id UUID NOT NULL REFERENCES platform.organizations(id),
-    type VARCHAR(50) NOT NULL, -- 'marketing', 'customer_service', etc.
-    configuration JSONB NOT NULL DEFAULT '{}',
-    status VARCHAR(20) DEFAULT 'active',
+    creator_id UUID NOT NULL REFERENCES depa.creators(id),
+    title VARCHAR(255) NOT NULL,
+    type VARCHAR(50) NOT NULL, -- 'ebook', 'course', 'template', 'community'
+    status VARCHAR(20) DEFAULT 'draft', -- 'draft', 'generating', 'review', 'published'
+    content JSONB NOT NULL DEFAULT '{}',
+    marketplace_data JSONB DEFAULT '{}',
+    performance_metrics JSONB DEFAULT '{}',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    published_at TIMESTAMP WITH TIME ZONE
+);
+
+-- Product creation workflows
+CREATE TABLE depa.workflows (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    product_id UUID NOT NULL REFERENCES depa.products(id),
+    status VARCHAR(20) DEFAULT 'pending',
+    current_step VARCHAR(100),
+    steps_completed JSONB DEFAULT '[]',
+    error_log JSONB DEFAULT '[]',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 ```

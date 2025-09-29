@@ -1,233 +1,225 @@
-# Marketing Department Specification
+# Marketing & Launch Department Specification
 
-**Version:** 1.0  
-**Last Updated:** 2025-09-13  
-**Owner:** Claude AI  
-**Status:** MVP Ready  
+**Version:** 2.0  
+**Last Updated:** 2025-09-28  
+**Owner:** Felipe PM + Claude AI  
+**Status:** UPDATED FOR DIGITAL PRODUCT FACTORY MODEL  
 
 ---
 
 ## Overview
 
-The Marketing Department is a comprehensive AI-powered marketing solution that enables micro-entrepreneurs to execute professional marketing campaigns across multiple channels. It combines content creation, scheduling, SEO optimization, and performance tracking into a unified system.
+The Marketing & Launch Department is a comprehensive AI-powered product marketing solution that enables creators to launch digital products with professional marketing campaigns across multiple channels. It combines landing page creation, launch orchestration, SEO optimization, and performance tracking into a unified system optimized for digital product success.
 
-**Department Mission:** Transform marketing from a complex, expensive challenge into an automated, data-driven growth engine for micro-businesses.
+**Department Mission:** Transform product launches from months-long complex campaigns into automated, high-converting launch sequences that drive digital product sales from day one.
 
 ---
 
 ## Department Agents
 
-### 1. Social Media Agent
-**Objective:** Create, schedule, and optimize social media content across platforms
+### 1. Landing Page Creator Agent
+**Objective:** Generate high-converting product landing pages and sales copy
 
 **Inputs:**
-- Company profile (industry, brand voice, target audience)
-- Brand assets (logo, colors, fonts, templates)
-- Content preferences (frequency, types, themes)
-- Product/service information
-- Industry calendar events and trends
+- Product specifications and benefits
+- Target audience demographics and psychology
+- Competitive analysis and market positioning
+- Creator brand voice and messaging guidelines
+- Conversion goals and success metrics
 
 **Outputs:**
-- Social media posts (text + images/videos)
-- Content calendar (weekly/monthly view)
-- Platform-specific adaptations (Instagram Stories, Facebook posts, LinkedIn articles)
-- Hashtag recommendations
-- Posting schedule optimization
+- Complete landing page copy and structure
+- Headline and subheading variations (A/B test ready)
+- Call-to-action optimization suggestions
+- Product feature presentation and benefits
+- Social proof integration strategies
 
 **Tooling:**
-- Instagram Basic Display API / Facebook Graph API
-- LinkedIn API (future)
-- TikTok API (future)
-- Image generation (DALL-E 3, Midjourney, Stable Diffusion)
-- Content scheduler (internal system)
-- Hashtag research tools
-- Trending topics APIs
+- Landing page builders (Whop, Gumroad, custom)
+- Conversion tracking systems (Google Analytics, Mixpanel)
+- A/B testing platforms (Optimizely, VWO)
+- Copywriting optimization tools
+- Heatmap and user behavior analytics
 
 **Limits:**
-- 20 posts/week (Starter), 50 posts/week (Growth), unlimited (Enterprise)
-- Image generation: 30 images/month (Starter), 100/month (Growth)
-- Maximum 5 social platforms per company
-- Content approval required for sensitive industries
+- 3 landing pages/month (Creator), 10 pages/month (Entrepreneur), unlimited (Agency)
+- A/B test variations: 3 per page (Creator), 10 (Entrepreneur)
+- Conversion tracking: 5 goals (Creator), 20 goals (Entrepreneur)
+- Page optimization cycles: weekly (Creator), daily (Entrepreneur)
 
 **KPIs:**
-- Posts published per week: >3 (MVP target)
-- Scheduling success rate: >95%
-- Engagement rate increase: >20% month-over-month
-- Content approval rate: >85%
-- Time to first post: <24 hours after setup
+- Landing page conversion rate: >3% (target)
+- Page generation time: <10 minutes
+- A/B test improvement rate: >15% uplift
+- Mobile optimization score: >90%
+- Page load speed: <3 seconds
 
-### 2. Blog/SEO Agent
-**Objective:** Generate SEO-optimized blog content and improve search visibility
+### 2. Launch Campaign Agent
+**Objective:** Orchestrate coordinated multi-channel product launch campaigns
 
 **Inputs:**
-- Target keywords and search intent
-- Company expertise areas
-- Competitor content analysis
-- Industry trends and news
-- Customer questions and pain points
+- Product launch date and timeline
+- Available marketing channels and budgets
+- Target audience segments and preferences
+- Competitive landscape and market timing
+- Content assets and promotional materials
 
 **Outputs:**
-- Blog post drafts (800-2000 words)
-- SEO-optimized titles and meta descriptions
-- Internal linking suggestions
-- Keyword density optimization
-- Content calendar aligned with SEO strategy
-- FAQ sections based on customer inquiries
+- Complete launch campaign timeline and strategy
+- Multi-channel content calendar (social, email, ads)
+- Launch sequence automation and workflows
+- Influencer outreach templates and strategies
+- Press release and announcement templates
 
 **Tooling:**
-- SEO analysis tools (Ahrefs API, SEMrush API)
-- Google Search Console API
-- Keyword research tools
-- Content optimization engines
-- Plagiarism checkers
-- Readability analyzers
+- Social media management platforms (Buffer, Hootsuite)
+- Email marketing automation (ConvertKit, Mailchimp)
+- Influencer outreach tools (Pitchbox, NinjaOutreach)
+- Campaign tracking analytics (UTM builders, attribution)
+- Project management and scheduling systems
 
 **Limits:**
-- 2 blog posts/month (Starter), 8 posts/month (Growth)
-- Maximum 5,000 words per post
-- Keyword tracking: 50 keywords (Starter), 200 (Growth)
-- SEO audit: monthly (Starter), weekly (Growth)
+- 2 major launches/month (Creator), 5 launches/month (Entrepreneur), unlimited (Agency)
+- Social platforms: 3 (Creator), 6 (Entrepreneur), unlimited (Agency)
+- Email sequences: 5 per launch (Creator), 15 (Entrepreneur)
+- Influencer outreach: 20 contacts (Creator), 100 (Entrepreneur)
 
 **KPIs:**
-- Blog posts published per month: >2
-- Average time on page: >3 minutes
-- Organic traffic increase: >30% month-over-month
-- Keyword ranking improvements: >10 positions gained
-- Content readability score: >70
+- Launch week traffic: 5,000+ visitors (target)
+- Email open rates: >35% for launch sequences
+- Social media engagement: >10% engagement rate
+- Launch conversion rate: >5% for launch traffic
+- Campaign setup time: <4 hours
 
-### 3. Ads/Performance Agent
-**Objective:** Create and optimize paid advertising campaigns for maximum ROI
+### 3. SEO & Discovery Agent
+**Objective:** Optimize product discoverability through search engines and marketplaces
 
 **Inputs:**
-- Marketing budget and goals
-- Target audience demographics
-- Product/service catalog
-- Competitor ad analysis
-- Historical performance data
+- Product keywords and search terms
+- Target marketplace platforms and algorithms
+- Competitor SEO analysis and benchmarks
+- Content topics and educational angles
+- Link building opportunities and partnerships
 
 **Outputs:**
-- Ad copy variations (headlines, descriptions, CTAs)
-- Creative briefs for visual assets
-- Audience targeting recommendations
-- Budget allocation strategies
-- Campaign performance reports
-- Optimization recommendations
+- SEO-optimized product descriptions and titles
+- Marketplace listing optimizations (Whop, Gumroad)
+- Keyword-rich blog content and articles
+- Backlink strategy and outreach templates
+- Search ranking monitoring and reports
 
 **Tooling:**
-- Facebook Ads API
-- Google Ads API
-- LinkedIn Campaign Manager API
-- Ad creative generators
-- A/B testing frameworks
-- Performance analytics tools
+- SEO research tools (SEMrush, Ahrefs API)
+- Marketplace API integrations (Whop, Gumroad)
+- Content management systems (WordPress, Ghost)
+- Link tracking and monitoring tools
+- Search console integrations (Google, Bing)
 
 **Limits:**
-- 3 active campaigns (Starter), 10 campaigns (Growth)
-- Ad spend tracking: $500/month (Starter), $2000/month (Growth)
-- Creative variations: 5 per campaign (Starter), 15 (Growth)
-- Performance reporting: weekly (Starter), daily (Growth)
+- 3 optimized listings/month (Creator), 10 listings/month (Entrepreneur), unlimited (Agency)
+- Keyword tracking: 50 keywords (Creator), 200 (Entrepreneur)
+- Blog posts: 4 per month (Creator), 12 per month (Entrepreneur)
+- Backlink outreach: 25 contacts/month (Creator), 100 (Entrepreneur)
 
 **KPIs:**
-- Return on Ad Spend (ROAS): >3:1
-- Cost Per Acquisition (CPA): <$50
-- Click-Through Rate (CTR): >2%
-- Conversion rate: >5%
-- Campaign setup time: <2 hours
+- Marketplace search ranking: Top 10 for target keywords
+- Organic traffic growth: >25% month-over-month
+- Backlink acquisition: >5 quality links per month
+- Content engagement: >5% CTR from search
+- Keyword ranking improvement: >15 positions gained
 
-### 4. Email/SMS Agent
-**Objective:** Execute personalized email and SMS marketing campaigns
+### 4. Social Proof Agent
+**Objective:** Generate and manage customer testimonials and social proof
 
 **Inputs:**
-- Customer contact lists
-- Segmentation criteria
-- Campaign objectives
-- Brand messaging guidelines
-- Customer lifecycle stage data
+- Customer purchase and usage data
+- Feedback forms and survey responses
+- Social media mentions and reviews
+- Success stories and outcome metrics
+- Brand reputation monitoring data
 
 **Outputs:**
-- Email templates and sequences
-- SMS campaign messages
-- Automated drip campaigns
-- Personalized newsletters
-- Performance analytics
-- List segmentation strategies
+- Curated testimonial collections and displays
+- Case study narratives and presentations
+- Review collection automation and workflows
+- Social proof widgets and trust signals
+- User-generated content campaigns
 
 **Tooling:**
-- SendGrid API / Amazon SES
-- Mailchimp API
-- Twilio SMS API
-- Email template builders
-- A/B testing tools
-- Analytics and reporting systems
+- Review collection platforms (Trustpilot, G2)
+- Survey and feedback tools (Typeform, SurveyMonkey)
+- Social media monitoring systems (Mention, Brand24)
+- Testimonial management platforms (Senja, Testimonial.to)
+- Trust badge and certification services
 
 **Limits:**
-- 1,000 emails/month (Starter), 5,000/month (Growth)
-- 100 SMS/month (Starter), 500/month (Growth)
-- 5 automation sequences (Starter), 20 (Growth)
-- Contact list size: 5,000 (Starter), 25,000 (Growth)
+- 5 testimonial campaigns/month (Creator), 15/month (Entrepreneur), unlimited (Agency)
+- Review requests: 100/month (Creator), 500/month (Entrepreneur)
+- Case studies: 1/month (Creator), 3/month (Entrepreneur)
+- Social proof widgets: 3 per product (Creator), 10 (Entrepreneur)
 
 **KPIs:**
-- Email open rate: >25%
-- Click-through rate: >3%
-- SMS response rate: >15%
-- List growth rate: >10% monthly
-- Unsubscribe rate: <2%
+- Review collection rate: >20% of customers
+- Average review rating: >4.5/5 stars
+- Testimonial conversion impact: >15% uplift
+- Social proof engagement rate: >8%
+- Case study completion rate: >80%
 
-### 5. Brand/Copy Agent
-**Objective:** Maintain consistent brand voice and create compelling copy across all materials
+### 5. Performance Analytics Agent
+**Objective:** Track marketing campaign performance and optimize for maximum ROI
 
 **Inputs:**
-- Brand guidelines and style guide
-- Target audience personas
-- Company values and messaging
-- Competitive positioning
-- Content performance history
+- Campaign tracking data from all channels
+- Sales and conversion metrics
+- Customer lifetime value calculations
+- Marketing spend and budget allocations
+- Competitor benchmarking data
 
 **Outputs:**
-- Brand voice guidelines
-- Copy templates for different content types
-- Messaging frameworks
-- Headline and tagline variations
-- Brand story narratives
-- Content audit and optimization recommendations
+- Performance dashboards and reports
+- ROI analysis and recommendations
+- Conversion funnel optimization suggestions
+- Budget allocation recommendations
+- Predictive performance forecasts
 
 **Tooling:**
-- Natural language processing tools
-- Style guide generators
-- Copy analysis engines
-- Brand consistency checkers
-- Sentiment analysis tools
+- Analytics platforms (Google Analytics, Mixpanel)
+- Attribution modeling tools (Hyros, TripleWhale)
+- Customer data platforms (Segment, RudderStack)
+- Marketing automation systems (Zapier, Make)
+- Business intelligence dashboards (Metabase, Grafana)
 
 **Limits:**
-- Brand guideline updates: monthly (Starter), weekly (Growth)
-- Copy variations: 3 per request (Starter), 10 (Growth)
-- Content audits: quarterly (Starter), monthly (Growth)
+- Campaign tracking: 5 campaigns (Creator), 20 (Entrepreneur), unlimited (Agency)
+- Data sources: 3 integrations (Creator), 10 (Entrepreneur)
+- Custom reports: 5/month (Creator), 20/month (Entrepreneur)
+- Performance alerts: 3 active (Creator), 15 (Entrepreneur)
 
 **KPIs:**
-- Brand consistency score: >90%
-- Copy performance (engagement): >baseline + 25%
-- Message clarity score: >80%
-- Brand recall improvement: measurable increase
-- Content approval time: <24 hours
+- Marketing ROI: >300% for digital campaigns
+- Attribution accuracy: >85% across channels
+- Report generation time: <5 minutes
+- Data freshness: <1 hour lag
+- Campaign optimization improvement: >20% quarterly
 
 ---
 
 ## Integration Points
 
 ### External Integrations
-- **Social Platforms:** Instagram/Facebook, LinkedIn, TikTok, Twitter/X
-- **Email/SMS:** SendGrid, Mailchimp, Twilio, Amazon SES
-- **Analytics:** Google Analytics, Facebook Pixel, LinkedIn Insight Tag
+- **Marketplaces:** Whop, Gumroad, Teachable, Etsy, Amazon KDP
+- **Analytics:** Google Analytics, Mixpanel, Hotjar, Amplitude
+- **Email Marketing:** ConvertKit, Mailchimp, Beehiiv, Substack
+- **Social Platforms:** Twitter/X, LinkedIn, YouTube, TikTok
 - **SEO Tools:** Google Search Console, Ahrefs, SEMrush
-- **Ad Platforms:** Facebook Ads, Google Ads, LinkedIn Campaign Manager
-- **Content Management:** WordPress, Webflow, Shopify blog
+- **Review Platforms:** Trustpilot, G2, ProductHunt, Capterra
 
 ### Internal Integrations
-- **Customer Service:** Customer inquiry data for FAQ and content ideas
-- **Sales CRM:** Lead scoring data to inform targeting
-- **Design Department:** Asset generation and brand consistency
-- **Data/BI:** Performance analytics and reporting
-- **Finance:** Marketing spend tracking and ROI calculation
+- **Content Creation:** Product specifications and assets for marketing
+- **Design Department:** Visual assets, covers, and brand consistency
+- **Analytics Department:** Performance data and optimization insights
+- **Customer Success:** Creator feedback and testimonial collection
+- **Whop Integration:** Direct marketplace publishing and analytics sync
 
 ---
 
@@ -281,50 +273,56 @@ The Marketing Department is a comprehensive AI-powered marketing solution that e
 
 ---
 
-## Templates & Industry Configurations
+## Templates & Product Type Configurations
 
-### Fashion/Apparel
-- **Content Themes:** Product showcases, styling tips, behind-the-scenes, customer features
-- **Posting Schedule:** Daily Instagram, 3x/week Facebook, weekly blog
-- **Key SEO Topics:** Fashion trends, styling guides, size guides
-- **Email Sequences:** Welcome series, seasonal collections, VIP sales
+### Ebook Launches
+- **Landing Page Focus:** Knowledge transformation, authority building, instant access
+- **Launch Timeline:** 7-day pre-launch, 3-day launch, 14-day post-launch
+- **Key SEO Topics:** Subject expertise, problem-solving guides, industry insights
+- **Email Sequences:** Author introduction, preview chapters, launch countdown, reader testimonials
 
-### Food & Beverage
-- **Content Themes:** Menu highlights, cooking tips, ingredient spotlights, customer reviews
-- **Posting Schedule:** 2x daily Instagram Stories, daily feed posts, weekly blog
-- **Key SEO Topics:** Menu items, location-based keywords, dietary options
-- **Email Sequences:** Weekly specials, loyalty program, event announcements
+### Course Launches
+- **Landing Page Focus:** Skill acquisition, transformation results, community access
+- **Launch Timeline:** 14-day pre-launch, 5-day launch, 30-day post-launch
+- **Key SEO Topics:** Learning outcomes, skill development, career advancement
+- **Email Sequences:** Instructor credibility, curriculum preview, student success stories, enrollment countdown
 
-### Digital Services
-- **Content Themes:** Educational content, case studies, tips and tutorials, client testimonials
-- **Posting Schedule:** 5x/week LinkedIn, 3x/week other platforms, bi-weekly blog
-- **Key SEO Topics:** Service keywords, industry expertise, how-to guides
-- **Email Sequences:** Educational nurture, service introductions, testimonial sharing
+### Template & Resource Launches
+- **Landing Page Focus:** Time-saving, professional results, immediate utility
+- **Launch Timeline:** 3-day pre-launch, 2-day launch, 7-day post-launch
+- **Key SEO Topics:** Design templates, business resources, productivity tools
+- **Email Sequences:** Preview galleries, use case examples, customer creations showcase
+
+### Community Launches
+- **Landing Page Focus:** Exclusive access, networking opportunities, continuous value
+- **Launch Timeline:** 21-day pre-launch, 7-day launch, ongoing engagement
+- **Key SEO Topics:** Community benefits, networking value, exclusive content
+- **Email Sequences:** Community vision, member highlights, exclusive previews, access invitation
 
 ---
 
 ## Success Metrics & KPIs
 
 ### Department-Level Metrics
-- **Activation Rate:** >80% of companies publish first content within 24 hours
-- **Content Volume:** >3 posts per week per company
-- **Engagement Growth:** >20% month-over-month increase
-- **Lead Generation:** >10 qualified leads per month
-- **ROI:** >3:1 return on marketing spend
+- **Launch Success Rate:** >90% of products launch within 72 hours
+- **Conversion Performance:** >3% average landing page conversion rate
+- **Launch Traffic:** >5,000 visitors per major product launch
+- **Revenue Attribution:** >60% of product sales attributed to marketing campaigns
+- **Creator Satisfaction:** >4.5/5 rating for launch campaigns
 
 ### Agent-Specific Metrics
-- **Social Media:** Engagement rate >3%, follower growth >10%/month
-- **Blog/SEO:** Organic traffic growth >30%/month, keyword rankings improved
-- **Ads/Performance:** ROAS >3:1, CPA within target range
-- **Email/SMS:** Open rate >25%, CTR >3%
-- **Brand/Copy:** Consistency score >90%, performance lift >25%
+- **Landing Page Creator:** Conversion rate >3%, page load speed <3s
+- **Launch Campaign:** Email open rate >35%, social engagement >10%
+- **SEO & Discovery:** Organic traffic growth >25%/month, marketplace ranking top 10
+- **Social Proof:** Review collection rate >20%, average rating >4.5/5
+- **Performance Analytics:** ROI tracking accuracy >85%, report generation <5 minutes
 
 ### Quality Assurance
-- **Content Approval Rate:** >85% (human approval for generated content)
-- **Brand Compliance:** >95% adherence to brand guidelines
-- **Error Rate:** <5% in published content
-- **Response Time:** All SLA targets met >95% of the time
-- **Customer Satisfaction:** >4.0/5.0 rating for marketing department
+- **Content Quality:** >90% creator approval rate for generated marketing materials
+- **Brand Consistency:** >95% adherence to creator brand guidelines
+- **Launch Timing:** >95% of campaigns launch on scheduled dates
+- **Performance Accuracy:** <5% variance between projected and actual results
+- **Creator Retention:** >80% of creators continue using department after first launch
 
 ---
 
@@ -353,26 +351,26 @@ The Marketing Department is a comprehensive AI-powered marketing solution that e
 ## Future Enhancements (Phase 2+)
 
 ### Advanced Features
-- AI-powered video content generation
-- Influencer collaboration management
-- Advanced competitor analysis
-- Predictive content performance modeling
-- Multi-language content generation
+- AI-powered video sales pages and trailers
+- Advanced A/B testing automation across all touchpoints
+- Predictive launch timing optimization
+- Multi-marketplace campaign coordination
+- Creator collaboration and partnership management
 
 ### Extended Integrations
-- TikTok, YouTube, Pinterest native integrations
-- Advanced CRM integrations (HubSpot, Salesforce)
-- E-commerce platform deep integration
-- Marketing automation tool connectivity
-- Advanced analytics and attribution modeling
+- YouTube, TikTok, Pinterest for content marketing
+- Advanced marketplace integrations (Udemy, Skillshare, Amazon KDP)
+- CRM integrations for customer journey tracking
+- Advanced attribution modeling across all touchpoints
+- Creator collaboration platforms integration
 
-### Marketplace Extensions
-- Industry-specific content packs
-- Seasonal campaign templates
-- Third-party tool integrations
-- Custom brand voice training
-- Advanced reporting modules
+### Creator Success Extensions
+- Launch performance prediction modeling
+- Automated post-launch optimization campaigns
+- Cross-product marketing and upselling campaigns
+- Creator coaching and optimization recommendations
+- White-label marketing solutions for agencies
 
 ---
 
-**Document Status:** Ready for implementation and agent development.
+**Document Status:** UPDATED FOR DIGITAL PRODUCT FACTORY - Ready for implementation and agent development focused on product marketing and launches.

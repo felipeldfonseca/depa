@@ -1,27 +1,37 @@
 # Depa
-**Revolutionary AI Departments Platform for Micro-Entrepreneurs**
+**The Fastest Digital Product Factory in the World**
 
 ---
 
 ## 🚀 Vision
 
-Depa democratizes business automation by providing micro-entrepreneurs with AI-powered virtual departments - Marketing, Customer Service, Sales CRM, Design, Finance, Data Analytics, and Growth & Ads - all accessible through a single, affordable platform.
+Depa breaks the time barrier for digital product creation by combining AI Departments with marketplace infrastructure. Instead of spending months creating and testing products that often fail, entrepreneurs can launch multiple digital products in days, fail fast, and find their winning product faster than ever.
 
 ## 🎯 Mission
 
-Empower micro-entrepreneurs worldwide to compete with large corporations by giving them access to enterprise-level business capabilities through AI automation, reducing operational costs by 90%+ while maintaining professional quality.
+Transform anyone into a digital product entrepreneur by providing AI-powered creation factories that generate, launch, and manage multiple products simultaneously. No more being stuck with one failed attempt - create dozens of products until you find your winner.
 
-## 💡 Meta-Strategy
+## 💡 Revolutionary Strategy
 
-We're building Depa using our own AI departments - demonstrating the platform's capabilities through transparent development. This creates authentic proof-of-concept content and viral marketing as we build in public.
+**The Digital Product Factory Approach:**
+- AI Departments create complete digital products (ebooks, courses, templates, communities)
+- Instant integration with Whop marketplace for checkout, delivery, and scaling
+- Launch 10+ products in 30 days, validate quickly, double down on winners
+- Eliminate the "ChatGPT paralysis" - go from idea to live product in 1-3 days
 
 ## 🏗️ Architecture
 
+**Core Platform:**
 - **Frontend**: Next.js 14 + React 18 + Tailwind CSS
 - **Backend**: FastAPI + Python 3.11 + PostgreSQL + Redis
 - **AI Services**: Multi-provider orchestration (OpenAI, Anthropic, Google)
 - **Infrastructure**: Google Cloud Platform (Cloud Run, Cloud SQL, Cloud Storage)
-- **Cost Optimization**: 80% Gemini 2.5 Flash, 20% premium models
+
+**Marketplace Integration:**
+- **Primary**: Whop API for product creation, checkout, and delivery
+- **Future**: Gumroad, Etsy Digital, Shopify marketplace expansion
+- **Payment Processing**: Handled by marketplace partners
+- **Content Delivery**: Automated through marketplace infrastructure
 
 ## 🎪 Team
 
@@ -30,32 +40,39 @@ We're building Depa using our own AI departments - demonstrating the platform's 
 
 ## 📊 Business Model
 
-### Pricing (Brazilian Market)
-- **Starter**: R$ 97/month - 3 departments
-- **Professional**: R$ 197/month - 5 departments  
-- **Enterprise**: R$ 397/month - All departments + advanced features
+### Dual Revenue Model
 
-### Add-on Departments
-- Design Department: +R$ 67/month
-- Sales CRM Department: +R$ 87/month
-- Data & BI Department: +R$ 97/month
-- Finance Department: +R$ 77/month
+**1. Digital Product Factory (Primary)**
+- **Creator**: R$ 97/month - Launch unlimited products with 5 core departments
+- **Entrepreneur**: R$ 197/month - All departments + advanced automation
+- **Agency**: R$ 497/month - Multi-client management + white-label options
+
+**2. Traditional Department Hiring (Secondary)**
+- Available for businesses wanting ongoing AI departments
+- Same pricing as Creator tier but for business operations vs product creation
+
+### Revenue Sharing
+- **Marketplace fees**: Handled by Whop (we don't take commission)
+- **Our value**: Speed of creation + AI automation + multi-marketplace distribution
 
 ## 🚦 Current Status
 
-**Phase 1: Foundation Setup** (In Progress)
+**Phase 1: Digital Product Factory MVP** (In Progress)
 - ✅ Comprehensive documentation (59 documents)
-- ✅ Project naming and branding (Depa)
-- 🔄 Development environment setup
-- ⏳ Repository initialization and first commit
+- ✅ Revolutionary business model pivot to product factory
+- 🔄 Whop API integration architecture
+- ⏳ First digital product creation pipeline
+- ⏳ Multi-product dashboard development
 
 ## 🗂️ Project Structure
 
 ```
 depa/
-├── frontend/          # Next.js application
-├── backend/           # FastAPI application  
-├── ai-services/       # AI orchestration service
+├── frontend/          # Next.js product factory dashboard
+├── backend/           # FastAPI + product creation orchestration
+├── ai-services/       # AI departments for product generation
+├── marketplace-integrations/  # Whop, Gumroad, etc. APIs
+├── product-templates/ # Digital product blueprints
 ├── docs/             # Comprehensive project documentation
 ├── scripts/          # Development and deployment scripts
 └── tests/            # Test suites
@@ -94,31 +111,33 @@ cat docs/ENV_SETUP.md
 
 ## 🌍 Market Focus
 
-**Primary**: Brazilian micro-entrepreneurs
-**Expansion**: LATAM markets (Mexico, Colombia, Argentina, Chile)
-**Long-term**: Global SMB market
+**Primary**: Global digital product creators and aspiring entrepreneurs
+**Geographic Priority**: English-speaking markets first (US, UK, Canada, Australia)
+**Secondary**: LATAM markets (Brazil, Mexico, Colombia, Argentina)
+**Target**: Anyone who wants to create digital products but gets stuck in analysis paralysis
 
 ## 🎖️ Competitive Advantages
 
-1. **Living Proof-of-Concept** - We use our own platform to build the business
-2. **Ultra-Lean Cost Structure** - $450/month vs traditional $23,000+/month
-3. **Meta-Marketing Strategy** - Transparent development creates viral content
-4. **AI-First Development** - Felipe + Claude team structure
-5. **Brazilian Market Expertise** - LGPD compliance, local payments, cultural fit
+1. **Speed Breakthrough** - 1-3 days from idea to live product vs 3-6 months traditional
+2. **Multi-Product Portfolio Strategy** - Launch 10+ products vs betting on one
+3. **Integrated Marketplace Infrastructure** - No need to build checkout/delivery systems
+4. **Fail-Fast Validation** - Rapid testing eliminates months of wasted effort
+5. **AI-Native Creation** - Complete automation vs manual content creation
+6. **Anti-Paralysis Solution** - Eliminates "ChatGPT overwhelm" with structured workflows
 
 ## 📈 Success Metrics
 
 ### MVP Goals (6 months)
-- 1000+ active customers
-- $100K+ MRR (Monthly Recurring Revenue)  
-- Customer acquisition cost <$50
-- Net revenue retention >110%
+- 500+ active creators launching products monthly
+- 5,000+ digital products created through platform
+- $50K+ MRR from subscriptions
+- Average creator launches 8+ products in first 90 days
 
 ### Key Performance Indicators
-- User activation rate >40%
-- Monthly churn rate <5%
-- Customer satisfaction >4.2/5.0
-- Platform uptime >99.5%
+- **Product Creation Velocity**: <3 days average idea-to-launch
+- **Success Rate**: >20% of products generate $100+ in first 30 days
+- **Creator Retention**: >60% still active after 3 months
+- **Multi-Product Adoption**: >80% of successful creators launch 3+ products
 
 ## 🤝 Contributing
 
@@ -130,7 +149,7 @@ Proprietary - All rights reserved by Felipe Fonseca and the Depa team.
 
 ---
 
-**Built with ❤️ by Felipe + Claude | Democratizing AI for Entrepreneurs Worldwide**
+**Built with ❤️ by Felipe + Claude | Breaking the Time Barrier for Digital Product Creation**
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
 
